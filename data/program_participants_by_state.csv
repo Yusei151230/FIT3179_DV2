@@ -1,0 +1,9 @@
+state,state_name,program_participants,program_sessions,participants_per_1000_people,latitude,longitude,label_latitude,label_longitude,label
+NSW,New South Wales,1820099,103475,213,-31.8,146.8,-31.8,146.8,New South Wales|1.82M
+VIC,Victoria,2141151,112597,306,-37.0,144.2,-37.0,144.2,Victoria|2.14M
+QLD,Queensland,1508407,67808,278,-22.5,144.5,-22.5,144.5,Queensland|1.51M
+WA,Western Australia,865823,63191,288,-25.5,121.5,-25.5,121.5,Western Australia|866K
+SA,South Australia,659222,71702,349,-30.0,135.5,-30.0,135.5,South Australia|659K
+TAS,Tasmania,93423,6947,162,-42.0,146.6,-43.9,146.6,Tasmania|93K
+ACT,Australian Capital Territory,73227,3020,152,-35.3,149.13,-35.6,151.6,ACT|73K
+NT,Northern Territory,68924,4884,262,-19.5,133.5,-17.6,133.5,Northern Territory|69K

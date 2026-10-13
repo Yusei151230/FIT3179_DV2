@@ -1,0 +1,9 @@
+state,state_name,physical_usage_millions,digital_usage_millions,total_usage_millions,digital_share_pct,latitude,longitude
+ACT,Australian Capital Territory,1.48,1.15,2.63,43.7,-35.3,149.13
+QLD,Queensland,25.15,16.48,41.63,39.6,-22.5,144.5
+NT,Northern Territory,0.46,0.26,0.73,35.6,-19.5,133.5
+WA,Western Australia,10.95,5.92,16.86,35.1,-25.5,121.5
+TAS,Tasmania,2.1,1.12,3.22,34.8,-42.0,146.6
+SA,South Australia,11.32,5.7,17.02,33.5,-30.0,135.5
+NSW,New South Wales,33.79,16.62,50.41,33.0,-31.8,146.8
+VIC,Victoria,33.7,13.74,47.44,29.0,-37.0,144.2

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Where can you find a library?",
+    "subtitle": "1,733 library service points across Australia in 2024–25"
+  },
+  "width": 290,
+  "height": {"step": 46},
+  "data": {"url": "../data/lib_outlets_by_state.csv"},
+  "transform": [
+    {"joinaggregate": [{"op": "sum", "field": "count", "as": "total"}], "groupby": ["state_name"]},
+    {"calculate": "indexof(['Branch', 'Mobile library', 'Other outlet'], datum.outlet_type)", "as": "type_order"}
+  ],
+  "encoding": {
+    "y": {
+      "field": "state_name", "type": "nominal", "title": null,
+      "sort": {"field": "total", "op": "max", "order": "descending"},
+      "axis": {
+        "ticks": false, "domain": false, "labelFontSize": 12, "labelColor": "#334155",
+        "labelPadding": 10, "labelLimit": 0,
+        "labelExpr": "datum.label == 'Australian Capital Territory' ? ['Australian Capital', 'Territory'] : datum.label"
+      }
+    }
+  },
+  "layer": [
+    {
+      "transform": [{"filter": "datum.count > 0"}],
+      "mark": {"type": "bar", "height": 24, "cornerRadius": 4, "stroke": "white", "strokeWidth": 2},
+      "encoding": {
+        "x": {"field": "count", "type": "quantitative", "stack": "zero", "axis": null},
+        "order": {"field": "type_order"},
+        "color": {
+          "field": "outlet_type", "type": "nominal", "title": null,
+          "scale": {
+            "domain": ["Branch", "Mobile library", "Other outlet"],
+            "range": ["#4F46E5", "#F59E0B", "#C7D2FE"]
+          },
+          "legend": {
+            "orient": "top", "direction": "horizontal", "symbolType": "square", "symbolSize": 120,
+            "labelFontSize": 12, "labelColor": "#334155", "gridAlign": "none", "columnPadding": 12, "offset": 12
+          }
+        },
+        "tooltip": [
+          {"field": "state_name", "title": "State"},
+          {"field": "outlet_type", "title": "Type"},
+          {"field": "count", "title": "Number", "format": ","}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.outlet_type == 'Branch' && datum.count >= 40"}],
+      "mark": {"type": "text", "align": "right", "dx": -8, "fontSize": 11, "fontWeight": 600, "color": "white"},
+      "encoding": {
+        "x": {"field": "count", "type": "quantitative"},
+        "text": {"field": "count", "type": "quantitative", "format": ","}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.type_order == 0"}],
+      "mark": {"type": "text", "align": "left", "dx": 8, "fontSize": 13, "fontWeight": 700, "color": "#0F172A"},
+      "encoding": {
+        "x": {"field": "total", "type": "quantitative"},
+        "text": {"field": "total", "type": "quantitative", "format": ","}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "title": {"anchor": "start", "fontSize": 18, "fontWeight": 700, "color": "#0F172A",
+              "subtitleColor": "#64748B", "subtitleFontSize": 13, "offset": 10}
+  }
+}

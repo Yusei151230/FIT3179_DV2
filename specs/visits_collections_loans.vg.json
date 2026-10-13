@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {"text": "Library visits, collections and loans in 2020-2025"},
+  "data": {"url": "../data/visits_collection_loans_physical_2020-2025.csv"},
+  "width": 810,
+  "height": 350,
+  "padding": {"right": 20},
+  "transform": [
+    {
+      "window": [{"op": "first_value", "field": "value", "as": "start_value"}],
+      "groupby": ["measure"],
+      "sort": [{"field": "year"}],
+      "frame": [null, null]
+    }
+  ],
+  "encoding": {
+    "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": 0}},
+    "y": {"field": "value", "type": "quantitative", "title": "Count", "axis": {"format": "~s"}},
+    "color": {
+      "field": "measure",
+      "type": "nominal",
+      "title": "Measure",
+      "scale": {
+        "domain": ["In-person visits", "Physical item loans", "Physical collection items"],
+        "range": ["#F43F5E", "#14B8A6", "#b0b7b5"]
+      },
+      "legend": {"orient": "top", "labelLimit": 0}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "line", "point": true},
+      "encoding": {
+        "tooltip": [
+          {"field": "measure", "title": "Measure"},
+          {"field": "year", "title": "Year"},
+          {"field": "value", "type": "quantitative", "title": "Value", "format": ","}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.end_label"}],
+      "mark": {"type": "rule", "strokeDash": [4, 4], "opacity": 0.5},
+      "encoding": {
+        "x": {"datum": "2020-21"},
+        "x2": {"field": "year"},
+        "y": {"field": "start_value", "type": "quantitative"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.end_label"}],
+      "mark": {"type": "rule", "strokeDash": [4, 4], "strokeWidth": 1},
+      "encoding": {
+        "y2": {"field": "start_value"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.end_label"}],
+      "mark": {"type": "point", "filled": true, "opacity": 0.4},
+      "encoding": {
+        "y": {"field": "start_value", "type": "quantitative"}
+      }
+    },
+
+    {
+      "transform": [
+        {"filter": "datum.end_label"},
+        {"calculate": "format(toNumber(datum['change_from_2020-21_pct']), '+.2~r') + '%'", "as": "pct_label"}
+      ],
+      "mark": {"type": "text", "align": "left", "dx": 8, "fontWeight": "bold"},
+      "encoding": {
+        "text": {"field": "pct_label"},
+        "size": {"condition": {"test": "datum.measure == 'In-person visits'", "value": 18}, "value": 14}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.end_label"}],
+      "mark": {"type": "text", "text": "since 2020-21", "align": "left", "dx": 8, "dy": 16, "fontSize": 11}
+    }
+  ]
+}

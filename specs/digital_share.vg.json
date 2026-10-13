@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": ["Out of every 100 uses of library", "collections, how many are digital?"],
+    "subtitle": "Each square = 1 in 100 uses",
+    "anchor": "start"
+  },
+  "data": {"url": "../data/digital_share.csv"},
+  "params": [
+    {
+      "name": "pick_year",
+      "value": "2024-25",
+      "bind": {
+        "input": "select",
+        "options": ["2020-21", "2021-22", "2022-23", "2023-24", "2024-25"],
+        "name": "Financial year: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.year == pick_year"}
+  ],
+  "width": 300,
+  "height": 300,
+  
+  "layer": [
+    {
+        "mark": {"type": "square", "size": 300, "opacity": 1},
+        "encoding": {
+            "x": {"field": "col", "type": "ordinal", "axis": null},
+            "y": {"field": "row", "type": "ordinal", "axis": null},
+            "color": {
+            "field": "type", "type": "nominal", "title": null,
+            "scale": {"domain": ["Digital", "Physical"], "range": ["#3B82F6", "#E2E8F0"]},
+            "legend": {"orient": "bottom", "direction": "horizontal"}
+            },
+            "tooltip": [{"field": "year"}, {"field": "type"}]
+            }
+    },
+    {
+    "transform": [
+        {"filter": "datum.type == 'Digital'"},
+        {"aggregate": [{"op": "count", "as": "num"}], "groupby": ["type"]},
+        {"calculate": "datum.num + '%'","as": "pct"}
+    ],
+    "mark": {"type": "text", "fontSize": 28, "fontWeight": "bold", "color": "#1E3A8A"},
+    "encoding": {
+        "x": {"value": 150},
+        "y": {"value": 45},
+        "text": {"field": "pct"}
+    }
+    },
+    {
+        "transform": [
+            {"filter": "datum.type == 'Physical'"},
+            {"aggregate": [{"op": "count", "as": "num"}], "groupby": ["type"]},
+            {"calculate": "datum.num + '%'","as": "pct"}
+        ],
+        "mark": {"type": "text", "fontSize": 28, "fontWeight": "bold", "color": "#475569"},
+        "encoding": {
+            "x": {"value": 150},
+            "y": {"value": 210},
+            "text": {"field": "pct"}
+        }
+    }
+  ],
+  "config": {"view": {"stroke": null}}
+}

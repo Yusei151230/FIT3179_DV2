@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "../data/programs_by_type.csv",
+    "format": {"type": "csv", "parse": {"sessions": "number"}}
+  },
+  "width": 220,
+  "height": {"step": 34},
+  "title": {
+    "text": ["More than half of library programs", "go beyond reading"],
+    "subtitle": "Program sessions by type, Australia 2024–25",
+    "anchor": "start",
+    "subtitleColor": "#666"
+  },
+  "transform": [
+    {"joinaggregate": [{"op": "sum", "field": "sessions", "as": "total"}]},
+    {"calculate": "datum.sessions / datum.total", "as": "share"},
+    {
+      "calculate": "format(datum.sessions, ',') + '  (' + format(datum.share, '.0%') + ')' + (datum.display_name == 'Hobbies & wellbeing' ? '   ▲ +35% in a year' : '')",
+      "as": "label"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "display_name",
+      "type": "nominal",
+      "title": null,
+      "sort": {"field": "sessions", "order": "descending"},
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 12,
+        "labelPadding": 8,
+        "labelLimit": 0
+      }
+    },
+    "x": {
+      "field": "sessions",
+      "type": "quantitative",
+      "title": null,
+      "axis": null,
+      "scale": {"domain": [0, 240000]}
+    },
+    "color": {
+      "condition": {
+        "test": "datum.display_name == 'Reading & learning'",
+        "value": "#CBD5E1"
+      },
+      "value": "#10B981"
+    },
+    "tooltip": [
+      {"field": "display_name", "title": "Type"},
+      {"field": "examples", "title": "For example"},
+      {"field": "sessions", "type": "quantitative", "title": "Sessions", "format": ","},
+      {"field": "share", "type": "quantitative", "title": "Share", "format": ".1%"},
+      {"field": "report_name", "title": "Report category"}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "strokeWidth": 3},
+      "encoding": {
+        "x": {"datum": 0},
+        "x2": {"field": "sessions"}
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 140, "opacity": 1}
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 11},
+      "encoding": {
+        "text": {"field": "label"},
+        "color": {"value": "#444"}
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}}
+}

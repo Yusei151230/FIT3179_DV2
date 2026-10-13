@@ -1,0 +1,114 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Libraries are used for much more than borrowing books",
+    "subtitle": [
+      "Growth since 2021-22. *Wi-Fi: only 4 states/territories report this"
+    ],
+    "anchor": "start"
+  },
+  "data": {
+    "url": "../data/services_growth.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.year != '2021-22'"
+    }
+  ],
+  "width": 720,
+  "height": {
+    "step": 44
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {
+        "orient": "top",
+        "labelAngle": 0,
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 12
+      }
+    },
+    "y": {
+      "field": "service",
+      "type": "nominal",
+      "title": null,
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 12,
+        "labelLimit": 300
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "white",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "color": {
+          "field": "change_since_2021-22_pct",
+          "type": "quantitative",
+          "title": "Growth since 2021-22 (%)",
+          "scale": {
+            "range": ["#E0F2FE", "#38BDF8", "#0369A1"],
+            "domain": [
+              0,
+              130
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 220,
+            "titleLimit": 300
+          }
+        },
+        "tooltip": [
+          {
+            "field": "service",
+            "title": "Service"
+          },
+          {
+            "field": "year",
+            "title": "Year"
+          },
+          {
+            "field": "value",
+            "title": "Value",
+            "format": ","
+          },
+          {
+            "field": "cell_label",
+            "title": "Growth since 2021-22"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 13,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "text": {
+          "field": "cell_label"
+        },
+        "color": {
+          "condition": {
+            "test": "datum['change_since_2021-22_pct'] > 85",
+            "value": "white"
+          },
+          "value": "#0F172A"
+        }
+      }
+    }
+  ]
+}

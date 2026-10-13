@@ -1,0 +1,25 @@
+service,year,value,change_since_2021-22_pct,cell_label,coverage
+Meeting room hours booked,2021-22,518940,0.0,base,All states
+Meeting room hours booked,2022-23,646583,24.6,+25%,All states
+Meeting room hours booked,2023-24,754011,45.3,+45%,All states
+Meeting room hours booked,2024-25,937757,80.7,+81%,All states
+Wi-Fi hours,2021-22,6587260,0.0,base,4 states/territories only
+Wi-Fi hours,2022-23,11806269,79.2,+79%,4 states/territories only
+Wi-Fi hours,2023-24,14061725,113.5,+113%,4 states/territories only
+Wi-Fi hours,2024-25,14807509,124.8,+125%,4 states/territories only
+Program attendances,2021-22,3527149,0.0,base,All states
+Program attendances,2022-23,6148529,74.3,+74%,All states
+Program attendances,2023-24,7030453,99.3,+99%,All states
+Program attendances,2024-25,7230276,105.0,+105%,All states
+Program sessions,2021-22,259620,0.0,base,All states
+Program sessions,2022-23,354978,36.7,+37%,All states
+Program sessions,2023-24,409444,57.7,+58%,All states
+Program sessions,2024-25,433624,67.0,+67%,All states
+Public computer hours,2021-22,3538690,0.0,base,All states
+Public computer hours,2022-23,5336213,50.8,+51%,All states
+Public computer hours,2023-24,5705835,61.2,+61%,All states
+Public computer hours,2024-25,5633760,59.2,+59%,All states
+Physical book loans,2021-22,102951529,0.0,base,All states
+Physical book loans,2022-23,113403662,10.2,+10%,All states
+Physical book loans,2023-24,118767707,15.4,+15%,All states
+Physical book loans,2024-25,118956778,15.5,+16%,All states

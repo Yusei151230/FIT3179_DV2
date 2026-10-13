@@ -1,0 +1,341 @@
+/* =========================================================
+   Layout strategy
+   - 1000px and wider : page is 1000px wide, centred.
+   - 700px to 999px   : the same layout, scaled down evenly.
+                        Every size is written as N * var(--u), where
+                        --u is 1px at 1000px and shrinks with the screen.
+   - below 700px      : smartphone layout. Fixed readable font sizes,
+                        side-by-side blocks stack vertically.
+   ========================================================= */
+
+:root {
+  --bg: #faf9f7;
+  --surface: #ffffff;
+  --ink: #1d1b20;
+  --muted: #5d5966;
+  --line: #e7e4ea;
+  --accent: #7b3fbf;
+  --accent-soft: #f1eafa;
+  --up: #2e7d4f;
+
+  /* One "design pixel". 1px on screens 1000px and wider. */
+  --u: 1px;
+  /* Scale used for chart SVGs (see main.js). */
+  --chart-u: var(--u);
+
+  --page: 1000px;
+
+  /* Type sizes, designed at 1000px */
+  --fs-body:  calc(18 * var(--u));
+  --fs-lede:  calc(21 * var(--u));
+  --fs-h3:    calc(24 * var(--u));
+  --fs-h2:    calc(38 * var(--u));
+  --fs-h1:    calc(56 * var(--u));
+  --fs-stat:  calc(36 * var(--u));
+  --fs-small: calc(14 * var(--u));
+  --fs-xs:    calc(13 * var(--u));
+
+  /* Spacing, designed at 1000px */
+  --space-xs: calc(5 * var(--u));
+  --space-s:  calc(12 * var(--u));
+  --space-m:  calc(20 * var(--u));
+  --space-l:  calc(30 * var(--u));
+  --space-xl: calc(60 * var(--u));
+  --gutter:   calc(20 * var(--u));
+  --space-section: calc(60 * var(--u));   /* gap between chapters */
+
+  --radius:   calc(14 * var(--u));
+  --text-max: calc(680 * var(--u));
+}
+
+/* Tablet / small laptop: scale everything with the screen width.
+   0.1vw = 1px when the screen is exactly 1000px wide. */
+@media (max-width: 999.98px) {
+  :root { --u: 0.1vw; }
+}
+
+/* Smartphone: stop scaling and use fixed, readable sizes. */
+@media (max-width: 699.98px) {
+  :root {
+    --u: 0.8px;
+    --chart-u: 1px;   /* charts just fit the card width */
+
+    --fs-body:  16px;
+    --fs-lede:  18px;
+    --fs-h3:    20px;
+    --fs-h2:    26px;
+    --fs-h1:    36px;
+    --fs-stat:  28px;
+    --fs-small: 13px;
+    --fs-xs:    12px;
+
+    --gutter:   16px;
+    --text-max: none;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: var(--fs-body);
+  line-height: 1.65;
+}
+
+.wrap {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(160deg, #2a1745 0%, #4b2683 55%, #7b3fbf 100%);
+  color: #fff;
+  padding: var(--space-xl) 0 var(--space-l);
+}
+
+.eyebrow {
+  margin: 0 0 calc(8 * var(--u));
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+h1, h2, h3 {
+  font-family: "Source Serif 4", Georgia, serif;
+  line-height: 1.2;
+}
+
+h1 {
+  margin: 0 0 calc(16 * var(--u));
+  font-size: var(--fs-h1);
+  line-height: 1.1;
+}
+
+.lede {
+  max-width: calc(620 * var(--u));
+  margin: 0 0 var(--space-l);
+  font-size: var(--fs-lede);
+  opacity: 0.92;
+}
+
+/* Three stats in one row */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-s);
+}
+
+.stat {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: calc(12 * var(--u));
+  padding: var(--space-m);
+}
+
+.stat-value {
+  display: block;
+  font-size: var(--fs-stat);
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  display: block;
+  margin-top: calc(6 * var(--u));
+  font-size: var(--fs-xs);
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
+.stat .up {
+  color: #b6f0cc;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ---------- Nav ---------- */
+.toc {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(250, 249, 247, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.toc .wrap {
+  display: flex;
+  gap: calc(24 * var(--u));
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.toc a {
+  padding: calc(14 * var(--u)) 0;
+  color: var(--muted);
+  font-size: var(--fs-small);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.toc a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ---------- Sections ---------- */
+/* "section.wrap" so these win over the .wrap margin/padding shorthand */
+section.wrap {
+  padding-top: calc(var(--space-section) / 2);  /* same as below each divider */
+  scroll-margin-top: 48px;
+}
+
+/* Clear break between chapters: space, a thin line, then space again */
+section.wrap + section.wrap {
+  margin-top: calc(var(--space-section) / 2);
+  padding-top: calc(var(--space-section) / 2);
+  border-top: 1px solid var(--line);
+}
+
+.section-num {
+  display: inline-block;
+  padding: calc(2 * var(--u)) calc(10 * var(--u));
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+}
+
+h2 {
+  margin: calc(12 * var(--u)) 0;
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  margin: var(--space-l) 0 var(--space-xs);
+  font-size: var(--fs-h3);
+}
+
+p { margin: 0 0 var(--space-m); max-width: var(--text-max); }
+
+section > p, .split-text p { color: #34313a; }
+
+/* End-of-chapter question that leads into the next chapter */
+.chapter-question {
+  margin: var(--space-l) 0 0;
+  padding: var(--space-m) var(--space-l);
+  max-width: var(--text-max);
+  background: var(--accent-soft);
+  border-radius: calc(12 * var(--u));
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: var(--fs-lede);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+/* ---------- Chart cards ---------- */
+.chart-card {
+  margin: var(--space-m) 0 0;
+  padding: var(--space-m);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(30, 20, 50, 0.04);
+  overflow-x: auto;
+}
+
+.chart-card figcaption {
+  margin-top: var(--space-xs);
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--line);
+  max-width: var(--text-max);
+  color: var(--muted);
+  font-size: var(--fs-small);
+  line-height: 1.5;
+}
+
+/* Several charts side by side inside one card */
+.chart-row {
+  display: flex;
+  gap: var(--space-xs);
+  align-items: flex-start;   /* line up the chart titles at the top */
+}
+.chart-row .chart {
+  flex: 1 1 0;
+  min-width: 0;   /* allow charts to shrink inside the row */
+}
+
+/* Charts scale like the rest of the page.
+   main.js sets each SVG's width to (spec width) * var(--chart-u),
+   and max-width keeps it inside its card. height:auto keeps the shape,
+   so text and marks inside the chart shrink by the same ratio. */
+.chart { min-height: calc(120 * var(--u)); }
+.chart .vega-embed { display: block; width: 100%; }
+.chart .vega-embed svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;   /* centre the chart; leftover space is split evenly */
+}
+.chart-error { color: #b3261e; font-size: var(--fs-small); }
+
+/* Vega-Lite dropdown binding (digital_share) */
+.vega-bindings { margin-top: var(--space-xs); font-size: var(--fs-small); color: var(--muted); }
+.vega-bindings select {
+  margin-left: calc(6 * var(--u));
+  padding: calc(4 * var(--u)) calc(8 * var(--u));
+  font: inherit;
+  border: 1px solid var(--line);
+  border-radius: calc(6 * var(--u));
+  background: #fff;
+}
+
+/* Text beside a chart */
+.split {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-l);
+  align-items: center;
+  margin-top: var(--space-m);
+}
+.split h3 { margin-top: var(--space-m); }
+.split .chart-card { margin-top: 0; }
+
+/* Two charts side by side */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-m);
+}
+
+/* ---------- Footer ---------- */
+/* Space between the last chapter and the footer */
+main { padding-bottom: var(--space-xl); }
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: var(--space-l) 0 var(--space-xl);
+  color: var(--muted);
+  font-size: var(--fs-small);
+}
+footer p { max-width: none; }
+footer a { color: var(--accent); }
+
+/* ---------- Smartphone layout ---------- */
+@media (max-width: 699.98px) {
+  .stats         { grid-template-columns: 1fr; }
+  .split         { grid-template-columns: 1fr; gap: 0; }
+  .grid-2        { grid-template-columns: 1fr; gap: 0; }
+  .chart-row     { flex-direction: column; align-items: stretch; }
+  .chart-card    { padding: 16px; }
+}

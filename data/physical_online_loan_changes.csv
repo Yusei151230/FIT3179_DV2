@@ -1,0 +1,11 @@
+series,year,year_start,value,value_millions,change_since_2020-21_pct,end_label
+Physical loans,2020-21,2020,101072889,101.1,0.0,
+Physical loans,2021-22,2021,102951529,103.0,1.9,
+Physical loans,2022-23,2022,113403662,113.4,12.2,
+Physical loans,2023-24,2023,118767707,118.8,17.5,
+Physical loans,2024-25,2024,118956778,119.0,17.7,+18% since 2020-21
+"Online loans",2020-21,2020,33956538,34.0,0.0,
+"Online loans",2021-22,2021,43095123,43.1,26.9,
+"Online loans",2022-23,2022,45585736,45.6,34.2,
+"Online loans",2023-24,2023,55188827,55.2,62.5,
+"Online loans",2024-25,2024,61007675,61.0,79.7,+80% since 2020-21

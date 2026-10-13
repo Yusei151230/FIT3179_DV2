@@ -1,0 +1,138 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "In three states, people visit their library online more than in person",
+        "subtitle": "Visits per person, 2024-25. Online = library website and catalogue visits.",
+        "anchor": "start"
+    },
+    "data": {
+        "url": "../data/inperson_online_visits_per_person.csv"
+    },
+    "width": 770,
+    "height": {
+        "step": 34
+    },
+    "transform": [
+        {
+            "calculate": "datum.which_is_higher == 'Online' ? datum.online_visits_per_person : datum.inperson_visits_per_person",
+            "as": "start_x"
+        },
+        {
+            "calculate": "datum.which_is_higher == 'Online' ? datum.inperson_visits_per_person : datum.online_visits_per_person",
+            "as": "end_x"
+        },
+        {
+            "calculate": "datum.inperson_visits_millions + 'M'",
+            "as": "inperson_visits"
+        },
+                {
+            "calculate": "datum.online_visits_millions + 'M'",
+            "as": "online_visits"
+        }
+    ],
+    "encoding": {
+        "y": {
+            "field": "state_name",
+            "type": "nominal",
+            "title": null
+        },
+        "x": {
+            "title": "Visits per Person"
+        },
+        "tooltip":[
+            {
+                "field":"inperson_visits",
+                "title":"In-person visits"
+                
+            },
+            {
+                "field":"online_visits",
+                "title":"Online visits"
+            },
+                        {
+                "field":"inperson_visits_per_person",
+                "title":"In-person visits per person"
+            },
+            {
+                "field":"online_visits_per_person",
+                "title":"Online visits per person"
+            }
+        ]
+    },
+    "layer": [
+        {
+            "mark": {
+                "type": "bar",
+                "size": 4
+            },
+            "encoding": {
+                "x": {
+                    "field": "start_x",
+                    "type": "quantitative",
+                    "axis": {
+                        "grid": false
+                    }
+                },
+                "x2": {
+                    "field": "end_x"
+                },
+                "color": {
+                    "condition": {
+                        "test": "datum.which_is_higher == 'Online'",
+                        "value": "#c9a3f0"
+                    },
+                    "value": "#d9dedc"
+                }
+            }
+        },
+        {
+            "mark": {
+                "type": "point",
+                "size": 100,
+                "filled": true
+            },
+            "encoding": {
+                "x": {
+                    "field": "inperson_visits_per_person",
+                    "type": "quantitative"
+                },
+                "color": {
+                    "datum": "In-person visits",
+                    "type": "nominal",
+                    "title": null,
+                    "scale": {
+                        "domain": [
+                            "In-person visits",
+                            "Online visits"
+                        ],
+                        "range": [
+                            "#e08a1e",
+                            "#7b3fbf"
+                        ]
+                    },
+                    "legend": {
+                        "orient": "top",
+                        "direction": "horizontal"
+                    }
+                }
+            }
+        },
+        {
+            "mark": {
+                "type": "point",
+                "size": 100,
+                "filled": true
+            },
+            "encoding": {
+                "x": {
+                    "field": "online_visits_per_person",
+                    "type": "quantitative"
+                },
+                "color": {
+                    "datum": "Online visits",
+                    "type": "nominal"
+                }
+            }
+        }
+    ]
+}

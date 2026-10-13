@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Digital borrowing grew 80% in five years",
+        "subtitle": "Change since 2020-21. Digital use includes ebooks, databases and streaming.",
+        "anchor": "start"
+    },
+    "data": {"url": "../data/physical_online_loan_changes.csv"},
+    "width": 860,
+    "height": 300,
+    "layer": [
+        {
+            "mark": {"type": "line", "point": true, "strokeWidth": 3},
+            "encoding": {
+                "x": {
+                    "field": "year", "type": "ordinal", "title": "Financial year",
+                    "axis": {"labelAngle": 0}
+                },
+                "y": {
+                    "field": "change_since_2020-21_pct", "type": "quantitative",
+                    "title": "Change since 2020-21 (%)",
+                    "scale": {"domain": [0, 90]}
+                },
+                "color": {
+                    "field": "series", "type": "nominal", "title": null,
+                    "scale": {
+                        "domain": ["Physical loans", "Online loans"],
+                        "range": ["#94A3B8", "#EC4899"]
+                    },
+                    "legend": {"orient": "top", "direction": "horizontal"}
+                }
+            }
+        },
+        {
+            "mark": {"type": "rule", "color": "lightgray", "strokeDash": [4, 4]},
+            "encoding": {
+                "x": {"datum": "2024-25", "type": "ordinal"}
+            }
+        },
+       {
+            "transform": [
+                {"filter": "datum.year == '2024-25'"},
+                {"calculate": "'+' + round(datum['change_since_2020-21_pct']) + '%'", "as": "pct_label"}
+            ],
+            "mark": {"type": "text", "align": "left", "dx": 10, "dy": -8, "fontWeight": "bold"},
+            "encoding": {
+                "x": {"field": "year", "type": "ordinal"},
+                "y": {"field": "change_since_2020-21_pct", "type": "quantitative"},
+                "color": {"field": "series", "type": "nominal"},
+                "text": {"field": "pct_label"},
+                "size": {
+                    "condition": {"test": "datum.series == 'Online loans'", "value": 18},
+                    "value": 13
+                }
+            }
+        }
+    ]
+}

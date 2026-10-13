@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "../data/programs_by_audience.csv",
+    "format": {"type": "csv", "parse": {"sessions": "number", "order": "number"}}
+  },
+  "width": 260,
+  "height": {"step": 34},
+  "title": {
+    "text": ["From toddlers to seniors:", "programs for every age"],
+    "subtitle": "Program sessions by audience, Australia 2024–25",
+    "anchor": "start",
+    "subtitleColor": "#666"
+  },
+  "transform": [
+    {"joinaggregate": [{"op": "sum", "field": "sessions", "as": "total"}]},
+    {"calculate": "datum.sessions / datum.total", "as": "share"},
+    {
+      "calculate": "format(datum.sessions, ',') + '  (' + format(datum.share, '.0%') + ')'",
+      "as": "label"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "audience",
+      "type": "nominal",
+      "title": null,
+      "sort": {"field": "order", "order": "ascending"},
+      "axis": {
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 12,
+        "labelPadding": 8,
+        "labelLimit": 0
+      }
+    },
+    "x": {
+      "field": "sessions",
+      "type": "quantitative",
+      "title": null,
+      "axis": null,
+      "scale": {"domain": [0, 170000]}
+    },
+    "color": {"value": "#10B981"},
+    "tooltip": [
+      {"field": "audience", "title": "Audience"},
+      {"field": "sessions", "type": "quantitative", "title": "Sessions", "format": ","},
+      {"field": "share", "type": "quantitative", "title": "Share", "format": ".1%"},
+      {"field": "note", "title": "Note"}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "strokeWidth": 3},
+      "encoding": {
+        "x": {"datum": 0},
+        "x2": {"field": "sessions"}
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 140, "opacity": 1}
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 11},
+      "encoding": {
+        "text": {"field": "label"},
+        "color": {"value": "#444"}
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}}
+}

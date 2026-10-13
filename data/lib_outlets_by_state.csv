@@ -1,0 +1,25 @@
+state,state_name,outlet_type,count
+ACT,Australian Capital Territory,Branch,10
+ACT,Australian Capital Territory,Mobile library,0
+ACT,Australian Capital Territory,Other outlet,0
+NSW,New South Wales,Branch,365
+NSW,New South Wales,Mobile library,27
+NSW,New South Wales,Other outlet,74
+NT,Northern Territory,Branch,30
+NT,Northern Territory,Mobile library,1
+NT,Northern Territory,Other outlet,5
+QLD,Queensland,Branch,303
+QLD,Queensland,Mobile library,14
+QLD,Queensland,Other outlet,22
+SA,South Australia,Branch,132
+SA,South Australia,Mobile library,4
+SA,South Australia,Other outlet,31
+TAS,Tasmania,Branch,45
+TAS,Tasmania,Mobile library,0
+TAS,Tasmania,Other outlet,4
+VIC,Victoria,Branch,292
+VIC,Victoria,Mobile library,43
+VIC,Victoria,Other outlet,84
+WA,Western Australia,Branch,232
+WA,Western Australia,Mobile library,1
+WA,Western Australia,Other outlet,14

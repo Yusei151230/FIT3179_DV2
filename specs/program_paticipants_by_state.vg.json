@@ -1,0 +1,232 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "7.2 million program attendances totally",
+    "subtitle": "Library program attendances by state in 2024–25."
+  },
+  "width": 800,
+  "height": 440,
+  "projection": {
+    "type": "mercator"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "../data/ne_10m_admin_1_states_provinces.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_1_states_provinces"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightgray",
+        "stroke": "white"
+      }
+    },
+    {
+      "data": {
+        "url": "../data/program_participants_by_state.csv"
+      },
+      "transform": [
+        
+        {
+          "calculate": "log(tan(PI/4 + datum.latitude*PI/360)) + datum.program_participants * 0.15 / 2200000",
+          "as": "top_y"
+        },
+        {
+          "calculate": "(2*atan(exp(datum.top_y)) - PI/2) * 180 / PI",
+          "as": "top_lat"
+        },
+        {
+          "calculate": "format(datum.program_participants, '.2~s')",
+          "as": "value_label"
+        },
+        {
+          "calculate": "datum.state == 'ACT' ? 'ACT' : datum.state_name",
+          "as": "name_label"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "color": "#ce2ceb",
+            "strokeWidth": 9,
+            "strokeCap": "butt",
+            "opacity": 0.85
+          },
+          "encoding": {
+            "longitude": {
+              "field": "longitude",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "latitude",
+              "type": "quantitative"
+            },
+            "longitude2": {
+              "field": "longitude"
+            },
+            "latitude2": {
+              "field": "top_lat"
+            },
+            "tooltip": [
+              {
+                "field": "state_name",
+                "type": "nominal",
+                "title": "State"
+              },
+              {
+                "field": "program_participants",
+                "type": "quantitative",
+                "title": "Attendances",
+                "format": ","
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "dy": -8,
+            "fontSize": 12,
+            "fontWeight": "bold",
+            "color": "#1a1a1a"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "longitude",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "top_lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "value_label",
+              "type": "nominal"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "color": "#444",
+            "align": "left",
+            "dx": 12,
+            "baseline": "bottom"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "longitude",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "latitude",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "name_label",
+              "type": "nominal"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "v": 1000000,
+            "lon": 114.0,
+            "lat": -41.0,
+            "t": "1 million"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "log(tan(PI/4 + datum.lat*PI/360)) + datum.v * 0.15 / 2200000",
+          "as": "ty"
+        },
+        {
+          "calculate": "(2*atan(exp(datum.ty)) - PI/2) * 180 / PI",
+          "as": "tlat"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "rule",
+            "color": "#ce2ceb",
+            "strokeWidth": 9,
+            "strokeCap": "butt",
+            "opacity": 0.85
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "longitude2": {
+              "field": "lon"
+            },
+            "latitude2": {
+              "field": "tlat"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 10,
+            "fontSize": 10,
+            "color": "#444"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "tlat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "t"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 10,
+            "fontSize": 10,
+            "color": "#444"
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "value": "0"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
