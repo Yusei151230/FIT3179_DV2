@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Libraries are used for much more than borrowing books",
+    "text": "Wi-Fi, computers, meeting rooms and programs grew far faster than book loans",
     "subtitle": [
       "Growth since 2021-22. *Wi-Fi: only 4 states/territories report this"
     ],

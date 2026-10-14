@@ -4,7 +4,7 @@
     "url": "../data/programs_by_audience.csv",
     "format": {"type": "csv", "parse": {"sessions": "number", "order": "number"}}
   },
-  "width": 260,
+  "width": 280,
   "height": {"step": 34},
   "title": {
     "text": ["From toddlers to seniors:", "programs for every age"],

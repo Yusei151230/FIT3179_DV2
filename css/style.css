@@ -45,7 +45,7 @@
   --space-section: calc(60 * var(--u));   /* gap between chapters */
 
   --radius:   calc(14 * var(--u));
-  --text-max: calc(680 * var(--u));
+  --text-max: none;   /* text uses the full page width */
 }
 
 /* Tablet / small laptop: scale everything with the screen width.
@@ -121,7 +121,7 @@ h1 {
 }
 
 .lede {
-  max-width: calc(620 * var(--u));
+  max-width: var(--text-max);
   margin: 0 0 var(--space-l);
   font-size: var(--fs-lede);
   opacity: 0.92;
@@ -311,13 +311,6 @@ section > p, .split-text p { color: #34313a; }
 .split h3 { margin-top: var(--space-m); }
 .split .chart-card { margin-top: 0; }
 
-/* Two charts side by side */
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-m);
-}
-
 /* ---------- Footer ---------- */
 /* Space between the last chapter and the footer */
 main { padding-bottom: var(--space-xl); }
@@ -335,7 +328,6 @@ footer a { color: var(--accent); }
 @media (max-width: 699.98px) {
   .stats         { grid-template-columns: 1fr; }
   .split         { grid-template-columns: 1fr; gap: 0; }
-  .grid-2        { grid-template-columns: 1fr; gap: 0; }
   .chart-row     { flex-direction: column; align-items: stretch; }
   .chart-card    { padding: 16px; }
 }

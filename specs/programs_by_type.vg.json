@@ -4,7 +4,7 @@
     "url": "../data/programs_by_type.csv",
     "format": {"type": "csv", "parse": {"sessions": "number"}}
   },
-  "width": 220,
+  "width": 240,
   "height": {"step": 34},
   "title": {
     "text": ["More than half of library programs", "go beyond reading"],
