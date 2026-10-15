@@ -14,7 +14,7 @@
     }
   ],
   "encoding": {
-    "x": {"field": "year", "type": "ordinal", "title": "Year", "axis": {"labelAngle": 0}},
+    "x": {"field": "year", "type": "ordinal", "title": "Financial year", "axis": {"labelAngle": 0}},
     "y": {"field": "value", "type": "quantitative", "title": "Count", "axis": {"format": "~s"}},
     "color": {
       "field": "measure",

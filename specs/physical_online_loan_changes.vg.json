@@ -13,7 +13,7 @@
             "mark": {"type": "line", "point": true, "strokeWidth": 3},
             "encoding": {
                 "x": {
-                    "field": "year", "type": "ordinal", "title": "Year",
+                    "field": "year", "type": "ordinal", "title": "Financial year",
                     "axis": {"labelAngle": 0}
                 },
                 "y": {
