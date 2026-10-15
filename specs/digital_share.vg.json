@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": ["Out of every 100 uses of library", "collections, how many are digital?"],
+    "text": ["More than 3 in 10 uses are now digital,", "up from 25 in 100 in 2020-21."],
     "subtitle": "Each square = 1 in 100 uses",
     "anchor": "start"
   },

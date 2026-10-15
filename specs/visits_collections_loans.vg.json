@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": "Library visits, collections and loans in 2020-2025"},
+  "title": {"text": "Physical visits and loans grew, but the collection did not"},
   "data": {"url": "../data/visits_collection_loans_physical_2020-2025.csv"},
   "width": 810,
   "height": 350,

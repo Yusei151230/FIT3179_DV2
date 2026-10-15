@@ -245,7 +245,7 @@ section > p, .split-text p { color: #34313a; }
 
 /* ---------- Chart cards ---------- */
 .chart-card {
-  margin: var(--space-m) 0 0;
+  margin: var(--space-m) 0;   /* same space above and below the card */
   padding: var(--space-m);
   background: var(--surface);
   border: 1px solid var(--line);

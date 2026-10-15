@@ -1,10 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": ["In the ACT, 44% of library use is digital.", "In Victoria, it is 29%."],
+    "text": ["In 7 of 8 states, over 30% of library use is digital","and in two it is about 40% or more"],
     "subtitle": [
-      "Share of library collection use that is digital, 2024–25. Australia overall: 34%.",
-      "Digital = ebooks, databases and streaming."
+      "Share of digital collection use: Digital = ebooks, databases and streaming."
     ]
   },
   "width": 440,
@@ -52,8 +51,9 @@
     {
       "data": {"url": "../data/digital_share_by_state.csv"},
       "transform": [
-        {"calculate": "datum.state == 'ACT' ? 152.6 : datum.state == 'TAS' ? 150.2 : datum.longitude", "as": "lab_lon"},
-        {"calculate": "datum.state == 'ACT' ? -35.3 : datum.state == 'TAS' ? -42.0 : datum.latitude", "as": "lab_lat"},
+        {"calculate": "datum.state == 'ACT' || datum.state == 'TAS' ? toNumber(datum.longitude) + 2.5 : datum.longitude", "as": "indicator_lon"},
+        {"calculate": "datum.state == 'ACT' || datum.state == 'TAS' ? toNumber(datum.longitude) + 4 : datum.longitude", "as": "lab_lon"},
+        {"calculate": "datum.state == 'ACT' ? 'ACT' : datum.state_name", "as": "lab_text"},
         {"calculate": "round(datum.digital_share_pct) + '%'", "as": "pct_label"},
         {"calculate": "datum.state == 'ACT' || datum.state == 'TAS'", "as": "outside"},
         {"calculate": "!datum.outside && datum.digital_share_pct >= 38", "as": "on_dark"}
@@ -65,8 +65,8 @@
           "encoding": {
             "longitude": {"field": "longitude", "type": "quantitative"},
             "latitude": {"field": "latitude", "type": "quantitative"},
-            "longitude2": {"field": "lab_lon"},
-            "latitude2": {"field": "lab_lat"}
+            "longitude2": {"field": "indicator_lon"},
+            "latitude2": {"field": "latitude"}
           }
         },
         {
@@ -74,7 +74,7 @@
           "mark": {"type": "text", "baseline": "bottom", "dy": -1, "fontSize": 11, "fontWeight": 500, "align": "center"},
           "encoding": {
             "longitude": {"field": "lab_lon", "type": "quantitative"},
-            "latitude": {"field": "lab_lat", "type": "quantitative"},
+            "latitude": {"field": "latitude", "type": "quantitative"},
             "text": {"field": "state_name"},
             "color": {"condition": {"test": "datum.on_dark", "value": "#E0E7FF"}, "value": "#334155"}
           }
@@ -84,26 +84,26 @@
           "mark": {"type": "text", "baseline": "top", "dy": 1, "fontSize": 17, "fontWeight": 700, "align": "center"},
           "encoding": {
             "longitude": {"field": "lab_lon", "type": "quantitative"},
-            "latitude": {"field": "lab_lat", "type": "quantitative"},
+            "latitude": {"field": "latitude", "type": "quantitative"},
             "text": {"field": "pct_label"},
             "color": {"condition": {"test": "datum.on_dark", "value": "white"}, "value": "#0F172A"}
           }
         },
         {
           "transform": [{"filter": "datum.outside"}],
-          "mark": {"type": "text", "baseline": "bottom", "dy": -1, "dx": 4, "fontSize": 11, "fontWeight": 500, "align": "left", "color": "#334155"},
+          "mark": {"type": "text", "baseline": "bottom", "dy": -1, "dx": 4, "fontSize": 11, "fontWeight": 500, "align": "center", "color": "#334155"},
           "encoding": {
             "longitude": {"field": "lab_lon", "type": "quantitative"},
-            "latitude": {"field": "lab_lat", "type": "quantitative"},
-            "text": {"field": "state_name"}
+            "latitude": {"field": "latitude", "type": "quantitative"},
+            "text": {"field": "lab_text"}
           }
         },
         {
           "transform": [{"filter": "datum.outside"}],
-          "mark": {"type": "text", "baseline": "top", "dy": 1, "dx": 4, "fontSize": 17, "fontWeight": 700, "align": "left", "color": "#0F172A"},
+          "mark": {"type": "text", "baseline": "top", "dy": 1, "dx": 4, "fontSize": 17, "fontWeight": 700, "align": "center", "color": "#0F172A"},
           "encoding": {
             "longitude": {"field": "lab_lon", "type": "quantitative"},
-            "latitude": {"field": "lab_lat", "type": "quantitative"},
+            "latitude": {"field": "latitude", "type": "quantitative"},
             "text": {"field": "pct_label"}
           }
         }
