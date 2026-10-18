@@ -41,7 +41,7 @@
       "axis": null,
       "scale": {"domain": [0, 170000]}
     },
-    "color": {"value": "#10B981"},
+    "color": {"value": "#db2777"},
     "tooltip": [
       {"field": "audience", "title": "Audience"},
       {"field": "sessions", "type": "quantitative", "title": "Sessions", "format": ","},

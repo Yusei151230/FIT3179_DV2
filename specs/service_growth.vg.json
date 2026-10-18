@@ -57,17 +57,18 @@
           "type": "quantitative",
           "title": "Growth since 2021-22 (%)",
           "scale": {
-            "range": ["#E0F2FE", "#38BDF8", "#0369A1"],
+            "range": ["#fffaf0", "#fcd38d", "#c2410c"],
             "domain": [
               0,
-              130
+              150
             ]
           },
           "legend": {
             "orient": "bottom",
             "direction": "horizontal",
             "gradientLength": 220,
-            "titleLimit": 300
+            "titleLimit": 300,
+            "values":[0, 50, 100, 150]
           }
         },
         "tooltip": [

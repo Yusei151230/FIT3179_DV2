@@ -1,0 +1,9 @@
+state,state_name,program_sessions,estimated_population,sessions_per_1000_people,latitude,longitude
+NSW,New South Wales,103475,8544068,12.1,-31.8,146.8
+VIC,Victoria,112597,7007386,16.1,-37.0,144.2
+QLD,Queensland,67808,5434726,12.5,-22.5,144.5
+WA,Western Australia,63191,3005348,21.0,-25.5,121.5
+SA,South Australia,71702,1891111,37.9,-30.0,135.5
+TAS,Tasmania,6947,575000,12.1,-42.0,146.6
+ACT,Australian Capital Territory,3020,481685,6.3,-35.3,149.13
+NT,Northern Territory,4884,263538,18.5,-19.5,133.5

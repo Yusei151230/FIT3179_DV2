@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": "Physical visits and loans grew, but the collection did not"},
+  "title": {"text": "Millions of collections, visits and loans, and visits grew the most"},
   "data": {"url": "../data/visits_collection_loans_physical_2020-2025.csv"},
   "width": 810,
   "height": 350,
@@ -21,8 +21,8 @@
       "type": "nominal",
       "title": "Measure",
       "scale": {
-        "domain": ["In-person visits", "Physical item loans", "Physical collection items"],
-        "range": ["#F43F5E", "#14B8A6", "#b0b7b5"]
+        "domain": ["In-person visits", "Physical loans", "Physical collection"],
+        "range": ["#F43F5E", "#99e2d8", "#b0b7b5"]
       },
       "legend": {"orient": "top", "labelLimit": 0}
     }

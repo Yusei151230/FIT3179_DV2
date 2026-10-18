@@ -31,7 +31,7 @@
             "y": {"field": "row", "type": "ordinal", "axis": null},
             "color": {
             "field": "type", "type": "nominal", "title": null,
-            "scale": {"domain": ["Digital", "Physical"], "range": ["#3B82F6", "#E2E8F0"]},
+            "scale": {"domain": ["Digital", "Physical"], "range": ["#3B82F6", "#99e2d8"]},
             "legend": {"orient": "bottom", "direction": "horizontal"}
             },
             "tooltip": [{"field": "year"}, {"field": "type"}]

@@ -6,7 +6,11 @@
   },
   "width": 440,
   "height": 400,
-  "projection": {"type": "mercator"},
+  "projection": {
+  "type": "conicEqualArea",
+  "parallels": [-18, -36],
+  "rotate": [-132, 0]
+},
   "layer": [
     {
       "data": {

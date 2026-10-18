@@ -25,7 +25,7 @@
                     "field": "series", "type": "nominal", "title": null,
                     "scale": {
                         "domain": ["Physical loans", "Digital use"],
-                        "range": ["#94A3B8", "#EC4899"]
+                        "range": ["#99e2d8", "#3B82F6"]
                     },
                     "legend": {"orient": "top", "direction": "horizontal"}
                 }

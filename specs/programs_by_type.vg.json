@@ -46,7 +46,7 @@
         "test": "datum.display_name == 'Reading & learning'",
         "value": "#CBD5E1"
       },
-      "value": "#10B981"
+      "value": "#db2777"
     },
     "tooltip": [
       {"field": "display_name", "title": "Type"},

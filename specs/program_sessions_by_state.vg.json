@@ -1,0 +1,464 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": [
+      "Victoria runs the most library programs,",
+      "but South Australia offers three times as many per person as NSW"
+    ],
+    "subtitle": "Library program sessions, 2024-25. Colour = sessions per 1,000 people; circle = total sessions.",
+    "anchor": "start"
+  },
+  "width": 560,
+  "height": 470,
+  "projection": {
+    "type": "conicEqualArea",
+    "parallels": [
+      -18,
+      -36
+    ],
+    "rotate": [
+      -132,
+      0
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "../data/ne_10m_admin_1_states_provinces.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_1_states_provinces"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "../data/program_sessions_by_state.csv"
+            },
+            "key": "state_name",
+            "fields": [
+              "sessions_per_1000_people",
+              "program_sessions"
+            ]
+          }
+        },
+        {
+          "calculate": "toNumber(datum.sessions_per_1000_people)",
+          "as": "per1000"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "white",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "color": {
+          "field": "per1000",
+          "type": "quantitative",
+          "title": [
+            "Sessions per",
+            "1,000 people"
+          ],
+          "scale": {
+            "domain": [
+              0,
+              40
+            ],
+            "range": [
+              "#fdf2f8",
+              "#f472b6",
+              "#9d174d"
+            ]
+          },
+          "legend": {
+            "orient": "right",
+            "direction": "vertical",
+            "values": [
+              0,
+              10,
+              20,
+              30,
+              40
+            ]
+
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.name",
+            "title": "State"
+          },
+          {
+            "field": "per1000",
+            "title": "Sessions per 1,000 people"
+          },
+          {
+            "field": "program_sessions",
+            "title": "Total sessions",
+            "type": "quantitative",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "../data/program_sessions_by_state.csv"
+      },
+      "transform": [
+        {
+          "calculate": "datum.state == 'ACT' ? toNumber(datum.longitude) + 3 : datum.longitude",
+          "as": "lon"
+        },
+        {
+          "calculate": "datum.state == 'ACT' ? toNumber(datum.latitude) - 1.5 : datum.latitude",
+          "as": "lat"
+        },
+        {
+          "calculate": "format(datum.program_sessions, '.3~s')",
+          "as": "total_label"
+        },
+        {
+          "calculate": "round(datum.sessions_per_1000_people) + ' per 1,000'",
+          "as": "rate_label"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "circle",
+            "color": "#1f2937",
+            "opacity": 0.55,
+            "stroke": "white",
+            "strokeWidth": 1
+          },
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "size": {
+              "field": "program_sessions",
+              "type": "quantitative",
+              "title": "Total sessions",
+              "scale": {
+                "range": [
+                  0,
+                  3000
+                ]
+              },
+              "legend": {
+                "orient": "right",
+                "values": [
+                  3000,
+                  10000,
+                  50000,
+                  100000
+                ],
+                "format": "~s",
+                "symbolFillColor": "#1f2937",
+                "symbolOpacity": 0.55,
+                "direction": "vertical"
+              }
+            },
+            "tooltip": [
+              {
+                "field": "state_name",
+                "title": "State"
+              },
+              {
+                "field": "sessions_per_1000_people",
+                "title": "Sessions per 1,000 people"
+              },
+              {
+                "field": "program_sessions",
+                "title": "Total sessions",
+                "format": ","
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 11,
+            "fontWeight": 700,
+            "baseline": "middle",
+            "dy": 0,
+            "color": "white"
+          },
+          "transform": [
+            {
+              "filter": "datum.program_sessions >= 30000"
+            }
+          ],
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "total_label"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 11,
+            "fontWeight": 600,
+            "baseline": "top",
+            "dy": 32,
+            "color": "white",
+            "stroke": "white",
+            "strokeWidth": 4,
+            "strokeJoin": "round"
+          },
+          "transform": [
+            {
+              "filter": "datum.program_sessions >= 90000"
+            }
+          ],
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "rate_label"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 11,
+            "fontWeight": 600,
+            "baseline": "top",
+            "dy": 32,
+            "color": "#111827"
+          },
+          "transform": [
+            {
+              "filter": "datum.program_sessions >= 90000"
+            }
+          ],
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "rate_label"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 11,
+            "fontWeight": 600,
+            "baseline": "top",
+            "dy": 23,
+            "color": "white",
+            "stroke": "white",
+            "strokeWidth": 4,
+            "strokeJoin": "round"
+          },
+          "transform": [
+            {
+              "filter": "datum.program_sessions >= 30000 && datum.program_sessions < 90000"
+            }
+          ],
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "rate_label"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 11,
+            "fontWeight": 600,
+            "baseline": "top",
+            "dy": 23,
+            "color": "#111827"
+          },
+          "transform": [
+            {
+              "filter": "datum.program_sessions >= 30000 && datum.program_sessions < 90000"
+            }
+          ],
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "rate_label"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "fontWeight": 700,
+            "baseline": "bottom",
+            "dy": -10,
+            "color": "white",
+            "stroke": "white",
+            "strokeWidth": 4,
+            "strokeJoin": "round"
+          },
+          "transform": [
+            {
+              "filter": "datum.program_sessions < 30000"
+            }
+          ],
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "total_label"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "fontWeight": 700,
+            "baseline": "bottom",
+            "dy": -10,
+            "color": "#111827"
+          },
+          "transform": [
+            {
+              "filter": "datum.program_sessions < 30000"
+            }
+          ],
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "total_label"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 11,
+            "fontWeight": 600,
+            "baseline": "top",
+            "dy": 8,
+            "color": "white",
+            "stroke": "white",
+            "strokeWidth": 4,
+            "strokeJoin": "round"
+          },
+          "transform": [
+            {
+              "filter": "datum.program_sessions < 30000"
+            }
+          ],
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "rate_label"
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 11,
+            "fontWeight": 600,
+            "baseline": "top",
+            "dy": 8,
+            "color": "#111827"
+          },
+          "transform": [
+            {
+              "filter": "datum.program_sessions < 30000"
+            }
+          ],
+          "encoding": {
+            "longitude": {
+              "field": "lon",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "lat",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "rate_label"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "legend": {
+      "offset": 16,
+      "rowPadding": 6
+    }
+  }
+}
