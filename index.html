@@ -65,10 +65,18 @@
       <figure class="chart-card chart-row">
     
         <!-- Map idiom 1: dot map -->
-        <div class="chart" data-spec="libraries_locations.vg.json"></div>
+        <div id="chart1" class="chart">
+            <script>
+              vegaEmbed("#chart1", "specs/libraries_locations.vg.json", {actions: false}).catch(console.error)
+            </script>
+        </div>
     
    
-        <div class="chart" data-spec="lib_num_by_state.vg.json"></div>
+        <div id="chart2" class="chart">
+            <script>
+              vegaEmbed("#chart2", "specs/lib_num_by_state.vg.json", {actions: false}).catch(console.error)
+            </script>
+        </div>
     
 
       </figure>
@@ -79,7 +87,11 @@
       </p>
       <figure class="chart-card">
         <!-- Line chart: visits, collection and loans -->
-        <div class="chart" data-spec="visits_collections_loans.vg.json"></div>
+        <div id="chart3" class="chart">
+            <script>
+              vegaEmbed("#chart3", "specs/visits_collections_loans.vg.json", {actions: false}).catch(console.error)
+            </script>
+        </div>
       </figure>
 
 
@@ -99,7 +111,11 @@
       </p>
       <div class="chart-card">
         <!-- Heatmap: service x year -->
-        <div class="chart" data-spec="service_growth.vg.json"></div>
+        <div id="chart4" class="chart">
+            <script>
+              vegaEmbed("#chart4", "specs/service_growth.vg.json", {actions: false}).catch(console.error)
+            </script>
+        </div>
     </div>
       <p>
         Programs in particular come in many forms, 
@@ -107,8 +123,16 @@
         With over 400,000 sessions a year, there is probably a program for almost everyone.
       </p>
       <div class="chart-card chart-row">
-        <div class="chart" data-spec="programs_by_type.vg.json"></div>
-        <div class="chart" data-spec="programs_by_audience.vg.json"></div>
+        <div id="chart5" class="chart">
+            <script>
+              vegaEmbed("#chart5", "specs/programs_by_type.vg.json", {actions: false}).catch(console.error)
+            </script>
+        </div>
+        <div id="chart6" class="chart">
+            <script>
+              vegaEmbed("#chart6", "specs/programs_by_audience.vg.json", {actions: false}).catch(console.error)
+            </script>
+        </div>
       </div>
       <p>
         And people really do come. Across Australia, 
@@ -116,7 +140,11 @@
       </p>
       <div class="chart-card">
         <!-- Map idiom 2: proportional symbol map -->
-        <div class="chart" data-spec="program_sessions_by_state.vg.json"></div>
+        <div id="chart7" class="chart">
+            <script>
+              vegaEmbed("#chart7", "specs/program_sessions_by_state.vg.json", {actions: false}).catch(console.error)
+            </script>
+        </div>
       </div>
     </section>
 
@@ -130,7 +158,11 @@
       </p>
       <div class="chart-card">
         <!-- Small multiples: loans | visits -->
-        <div class="chart" data-spec="physical_online_loan_changes.vg.json"></div>
+        <div id="chart8" class="chart">
+            <script>
+              vegaEmbed("#chart8", "specs/physical_online_loan_changes.vg.json", {actions: false}).catch(console.error)
+            </script>
+        </div>
       </div>
       <p>
         Borrowing is not the only thing moving online.
@@ -138,7 +170,11 @@
       </p>
       <div class="chart-card">
         <!-- Dumbbell chart -->
-        <div class="chart" data-spec="inperson_online_visits.vg.json"></div>
+        <div id="chart9" class="chart">
+            <script>
+              vegaEmbed("#chart9", "specs/inperson_online_visits.vg.json", {actions: false}).catch(console.error)
+            </script>
+        </div>
       </div>
       <p>
         Visiting is moving online, and so is what people borrow.
@@ -146,9 +182,17 @@
 
       <div class="chart-card chart-row">
         <!-- Waffle chart -->
-        <div class="chart" data-spec="digital_share.vg.json"></div>
+        <div id="chart10" class="chart">
+            <script>
+              vegaEmbed("#chart10", "specs/digital_share.vg.json", {actions: false}).catch(console.error)
+            </script>
+        </div>
         <!-- Map idiom 3: choropleth map -->
-        <div class="chart" data-spec="digital_share_by_state.vg.json"></div>
+        <div id="chart11" class="chart">
+            <script>
+              vegaEmbed("#chart11", "specs/digital_share_by_state.vg.json", {actions: false}).catch(console.error)
+            </script>
+        </div>
       </div>
     </section>
 
@@ -173,7 +217,5 @@
       </p>
     </div>
   </footer>
-
-  <script src="js/main.js?v=3"></script>
 </body>
 </html>

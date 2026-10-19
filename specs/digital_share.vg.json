@@ -5,7 +5,7 @@
     "subtitle": "Each square = 1 in 100 uses",
     "anchor": "start"
   },
-  "data": {"url": "../data/digital_share.csv"},
+  "data": {"url": "data/digital_share.csv"},
   "params": [
     {
       "name": "pick_year",

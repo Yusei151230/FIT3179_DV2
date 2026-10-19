@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url": "../data/programs_by_audience.csv",
+    "url": "data/programs_by_audience.csv",
     "format": {"type": "csv", "parse": {"sessions": "number", "order": "number"}}
   },
   "width": 280,

@@ -24,7 +24,7 @@
   "layer": [
     {
       "data": {
-        "url": "../data/ne_10m_admin_1_states_provinces.json",
+        "url": "data/ne_10m_admin_1_states_provinces.json",
         "format": {
           "type": "topojson",
           "feature": "ne_10m_admin_1_states_provinces"
@@ -35,7 +35,7 @@
           "lookup": "properties.name",
           "from": {
             "data": {
-              "url": "../data/program_sessions_by_state.csv"
+              "url": "data/program_sessions_by_state.csv"
             },
             "key": "state_name",
             "fields": [
@@ -106,7 +106,7 @@
     },
     {
       "data": {
-        "url": "../data/program_sessions_by_state.csv"
+        "url": "data/program_sessions_by_state.csv"
       },
       "transform": [
         {

@@ -16,7 +16,7 @@
   "layer": [
     {
       "data": {
-        "url": "../data/ne_10m_admin_1_states_provinces.json",
+        "url": "data/ne_10m_admin_1_states_provinces.json",
         "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
       },
       "transform": [
@@ -24,7 +24,7 @@
         {
           "lookup": "properties.name",
           "from": {
-            "data": {"url": "../data/digital_share_by_state.csv"},
+            "data": {"url": "data/digital_share_by_state.csv"},
             "key": "state_name",
             "fields": ["digital_share_pct"]
           }
@@ -53,7 +53,7 @@
       ]
     },
     {
-      "data": {"url": "../data/digital_share_by_state.csv"},
+      "data": {"url": "data/digital_share_by_state.csv"},
       "transform": [
         {"calculate": "datum.state == 'ACT' || datum.state == 'TAS' ? toNumber(datum.longitude) + 2.5 : datum.longitude", "as": "indicator_lon"},
         {"calculate": "datum.state == 'ACT' || datum.state == 'TAS' ? toNumber(datum.longitude) + 4 : datum.longitude", "as": "lab_lon"},

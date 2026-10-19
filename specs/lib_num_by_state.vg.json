@@ -6,7 +6,7 @@
   },
   "width": 290,
   "height": {"step": 46},
-  "data": {"url": "../data/lib_outlets_by_state.csv"},
+  "data": {"url": "data/lib_outlets_by_state.csv"},
   "transform": [
     {"joinaggregate": [{"op": "sum", "field": "count", "as": "total"}], "groupby": ["state_name"]},
     {"calculate": "indexof(['Branch', 'Mobile library', 'Other outlet'], datum.outlet_type)", "as": "type_order"}
