@@ -20,7 +20,6 @@
         "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
       },
       "transform": [
-        {"filter": "datum.properties.admin == 'Australia'"},
         {
           "lookup": "properties.name",
           "from": {
@@ -31,7 +30,6 @@
         }
       ],
       "layer": [
-        {"mark": {"type": "geoshape", "fill": "#E2E8F0", "stroke": "white"}},
         {
           "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1.2},
           "encoding": {
