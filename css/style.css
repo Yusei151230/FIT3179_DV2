@@ -1,13 +1,3 @@
-/* =========================================================
-   Layout strategy
-   - 1000px and wider : page is 1000px wide, centred.
-   - 700px to 999px   : the same layout, scaled down evenly.
-                        Every size is written as N * var(--u), where
-                        --u is 1px at 1000px and shrinks with the screen.
-   - below 700px      : smartphone layout. Fixed readable font sizes,
-                        side-by-side blocks stack vertically.
-   ========================================================= */
-
 :root {
   --bg: #faf9f7;
   --surface: #ffffff;
