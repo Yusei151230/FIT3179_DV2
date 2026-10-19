@@ -40,7 +40,7 @@
     },
     {
       "transform": [{"filter": "datum.end_label"}],
-      "mark": {"type": "rule", "strokeDash": [4, 4], "opacity": 0.5},
+      "mark": {"type": "rule", "strokeDash": [4, 4], "strokeWidth": 1},
       "encoding": {
         "x": {"datum": "2020-21"},
         "x2": {"field": "year"},
