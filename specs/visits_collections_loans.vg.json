@@ -56,7 +56,7 @@
     },
     {
       "transform": [{"filter": "datum.end_label"}],
-      "mark": {"type": "point", "filled": true, "opacity": 0.4},
+      "mark": {"type": "point", "filled": true},
       "encoding": {
         "y": {"field": "start_value", "type": "quantitative"}
       }
