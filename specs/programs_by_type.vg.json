@@ -4,7 +4,7 @@
     "url": "data/programs_by_type.csv",
     "format": {"type": "csv", "parse": {"sessions": "number"}}
   },
-  "width": 240,
+  "width": "container",
   "height": {"step": 34},
   "title": {
     "text": ["More than half of library programs", "go beyond reading"],
@@ -75,5 +75,9 @@
       }
     }
   ],
-  "config": {"view": {"stroke": null}}
+    "config": {
+    "view": {"stroke": null},
+    "title": {"anchor": "start", "fontSize": 18, "fontWeight": 700, "color": "#0F172A",
+              "subtitleColor": "#64748B", "subtitleFontSize": 13, "offset": 10}
+  }
 }

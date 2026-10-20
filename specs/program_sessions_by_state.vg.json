@@ -8,7 +8,7 @@
     "subtitle": "Library program sessions, 2024-25. Colour = sessions per 1,000 people; circle = total sessions.",
     "anchor": "start"
   },
-  "width": 560,
+  "width": "container",
   "height": 470,
   "projection": {
     "type": "conicEqualArea",
@@ -453,12 +453,8 @@
     }
   ],
   "config": {
-    "view": {
-      "stroke": null
-    },
-    "legend": {
-      "offset": 16,
-      "rowPadding": 6
-    }
+    "view": {"stroke": null},
+    "title": {"anchor": "start", "fontSize": 18, "fontWeight": 700, "color": "#0F172A",
+              "subtitleColor": "#64748B", "subtitleFontSize": 13, "offset": 10}
   }
 }

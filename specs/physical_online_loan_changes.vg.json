@@ -6,9 +6,30 @@
         "anchor": "start"
     },
     "data": {"url": "data/physical_online_loan_changes.csv"},
-    "width": 860,
+    "width": "container",
     "height": 300,
     "layer": [
+                  {
+      "data": {"values": [{}]},
+      "mark": {"type": "rect", "opacity": 0.3},
+      "encoding": {
+        "x": {"datum": "2020-21"},
+        "x2": {"datum": "2021-22"},
+        "y": {"value": 0},
+        "y2": {"value": "height"},
+        "color": {"value": "#e5e7eb"}
+      }
+    },
+  {
+    "data": {"values": [{}]},
+    "mark": {"type": "text", "text": "COVID-19 lockdowns", "align": "left", "dx": 6,
+             "baseline": "top", "dy": 6, "fontSize": 11, "fontWeight": 600},
+    "encoding": {
+      "x": {"datum": "2020-21"},
+      "y": {"value": 0},
+      "color": {"value": "#6b7280"}
+    }
+  },
         {
             "mark": {"type": "line", "point": true, "strokeWidth": 3},
             "encoding": {
@@ -54,5 +75,10 @@
                 }
             }
         }
-    ]
+    ],
+      "config": {
+    "view": {"stroke": null},
+    "title": {"anchor": "start", "fontSize": 18, "fontWeight": 700, "color": "#0F172A",
+              "subtitleColor": "#64748B", "subtitleFontSize": 13, "offset": 10}
+  }
 }

@@ -8,7 +8,7 @@
     "data": {
         "url": "data/inperson_online_visits_per_person.csv"
     },
-    "width": 770,
+    "width": "container",
     "height": {
         "step": 34
     },
@@ -34,7 +34,17 @@
         "y": {
             "field": "state_name",
             "type": "nominal",
-            "title": null
+            "title": null,
+            "axis": {
+                "labelFontWeight": {
+                    "condition": {"test": "indexof(['Queensland', 'South Australia', 'Tasmania'], datum.value) >= 0", "value": "bold"},
+                    "value": "normal"
+                },
+                "labelColor": {
+                    "condition": {"test": "indexof(['Queensland', 'South Australia', 'Tasmania'], datum.value) >= 0", "value": "#D97706"},
+                    "value": "#000"
+                }
+            }
         },
         "x": {
             "title": "Visits per Person"
@@ -79,7 +89,7 @@
                 "color": {
                     "condition": {
                         "test": "datum.which_is_higher == 'Online'",
-                        "value": "#c9a3f0"
+                        "value": "#FBBF24"
                     },
                     "value": "#d9dedc"
                 }
@@ -134,5 +144,10 @@
                 }
             }
         }
-    ]
+    ],
+    "config": {
+    "view": {"stroke": null},
+    "title": {"anchor": "start", "fontSize": 18, "fontWeight": 700, "color": "#0F172A",
+              "subtitleColor": "#64748B", "subtitleFontSize": 13, "offset": 10}
+  }
 }

@@ -6,7 +6,7 @@
       "Share of digital collection use: Digital = ebooks, databases and streaming."
     ]
   },
-  "width": 440,
+  "width": "container",
   "height": 380,
   "projection": {
   "type": "conicEqualArea",

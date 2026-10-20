@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=17">
+  <link rel="stylesheet" href="css/style.css?v=31">
 
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -20,9 +20,10 @@
       <p class="eyebrow">Australian public libraries · 2020-21 to 2024-25</p>
       <h1>More than books</h1>
       <p class="lede">
-        You might picture a library as a quiet place to borrow books. 
-        But Australia's libraries are busier than they have been in years, 
-        and they offer much more: free programs for every age, computers and Wi-Fi, 
+        You might picture a library as a quiet place <br>
+        to borrow books. But Australia's libraries are busier <br>
+        than they have been in years, and they offer <br>
+        much more: free programs for every age, computers and Wi-Fi, <br>
         and a growing collection you can use from home.
       </p>
 
@@ -58,10 +59,17 @@
     <section id="everywhere" class="wrap">
       <span class="section-num">01</span>
       <h2>There is a library near almost everyone</h2>
-      <p>
-        Australia has 1,733 public libraries. Most sit along the east coast, <br> where most people live,
-        but they reach far inland too.
-      </p>
+      <div class="text-with-stat">
+        <p>
+          Australia has 1,733 public libraries. <br>
+          Most sit along the east coast, <br> where most people live,
+          but they reach far inland too.
+        </p>
+        <aside class="side-stat">
+          <span class="side-stat-value">71%</span>
+          <span class="side-stat-label">of library service points are in NSW, Victoria and Queensland</span>
+        </aside>
+      </div>
       <figure class="chart-card chart-row">
     
         <!-- Map idiom 1: dot map -->
@@ -80,11 +88,17 @@
     
 
       </figure>
-      <p>
-        Australian libraries hold a huge collection, 
-        and they are busy. <br>Since COVID-19, 
-        more people are visiting, and borrowing more than ever.
-      </p>
+      <div class="text-with-stat">
+        <p>
+          Australian libraries hold a huge collection, <br> and they are busy. <br>
+          Since COVID-19, more people are visiting, <br>
+          and borrowing more than ever.
+        </p>
+        <aside class="side-stat">
+          <span class="side-stat-value">+57%</span>
+          <span class="side-stat-label">in-person visits since 2020-21</span>
+        </aside>
+      </div>
       <figure class="chart-card">
         <!-- Line chart: visits, collection and loans -->
         <div id="chart3" class="chart">
@@ -96,8 +110,16 @@
 
 
       <blockquote class="chapter-question">
-        The number of visitors increases by 50% 
-        but why is the increase ratio of borrowing not proportional to that?
+        <div class="cq-facts">
+          <p>
+            Visits grew by 57%, <br>
+            but borrowing grew by only 18%.
+          </p>
+        </div>
+        <p class="cq-question">
+          <span class="cq-arrow" aria-hidden="true">→</span>
+          <span>So what are all these extra visitors doing?</span>
+        </p>
       </blockquote>
     </section>
 
@@ -105,10 +127,17 @@
     <section id="more-than-books" class="wrap">
       <span class="section-num">02</span>
       <h2>More than books</h2>
-      <p>
-        Books are still at the heart of the library. <br>
-        However people also come for different purposes.
-      </p>
+      <div class="text-with-stat">
+        <p>
+          Books are still at the heart of the library. <br>
+          However people also come for different purposes: <br>
+          Wi-Fi, computers, meeting rooms and programs.
+        </p>
+        <aside class="side-stat">
+          <span class="side-stat-value">+125%</span>
+          <span class="side-stat-label">Wi-Fi hours since 2021-22, the fastest growth of any service</span>
+        </aside>
+      </div>
       <div class="chart-card">
         <!-- Heatmap: service x year -->
         <div id="chart4" class="chart">
@@ -117,11 +146,17 @@
             </script>
         </div>
     </div>
-      <p>
-        Programs in particular come in many forms, 
-        on different topics and for different ages. 
-        With over 400,000 sessions a year, there is probably a program for almost everyone.
-      </p>
+      <div class="text-with-stat">
+        <p>
+          Programs in particular come in many forms, <br>
+          on different topics and for different ages. <br>
+          With over 400,000 sessions a year, <br> there is probably a program for almost everyone.
+        </p>
+        <aside class="side-stat">
+          <span class="side-stat-value">+67%</span>
+          <span class="side-stat-label">program sessions since 2021-22</span>
+        </aside>
+      </div>
       <div class="chart-card chart-row">
         <div id="chart5" class="chart">
             <script>
@@ -134,10 +169,17 @@
             </script>
         </div>
       </div>
-      <p>
-        And people really do come. Across Australia, 
-        library programs drew over 7 million attendances in a year.
-      </p>
+      <div class="text-with-stat">
+        <p>
+          Most libraries are on the east coast, <br>
+          so you might expect most programs to be there too. <br>
+          But per person, South Australia runs the most.
+        </p>
+        <aside class="side-stat">
+          <span class="side-stat-value">38</span>
+          <span class="side-stat-label">sessions per 1,000 people in South Australia, against 16 nationally</span>
+        </aside>
+      </div>
       <div class="chart-card">
         <!-- Map idiom 2: proportional symbol map -->
         <div id="chart7" class="chart">
@@ -152,10 +194,17 @@
     <section id="online" class="wrap">
       <span class="section-num">03</span>
       <h2>What happens outside the building?</h2>
-      <p>
-        Most people still borrow physical books. 
-        But over the same five years, borrowing online grew much faster: ebooks, audiobooks, databases and streaming.
-      </p>
+      <div class="text-with-stat">
+        <p>
+          Most people still borrow physical books. <br>
+          But over the same five years, <br>
+          borrowing online grew much faster.
+        </p>
+        <aside class="side-stat">
+          <span class="side-stat-value">+80%</span>
+          <span class="side-stat-label">digital use since 2020-21, against +18% for physical loans</span>
+        </aside>
+      </div>
       <div class="chart-card">
         <!-- Small multiples: loans | visits -->
         <div id="chart8" class="chart">
@@ -164,10 +213,16 @@
             </script>
         </div>
       </div>
-      <p>
-        Borrowing is not the only thing moving online.
-         In some states, people now visit the library's website more often than its building.
-      </p>
+      <div class="text-with-stat">
+        <p>
+          Borrowing is not the only thing moving online. <br>
+          In some states, people now visit the library's website <br> more often than its building.
+        </p>
+        <aside class="side-stat">
+          <span class="side-stat-value">1.5×</span>
+          <span class="side-stat-label">as many online visits as in-person visits in South Australia</span>
+        </aside>
+      </div>
       <div class="chart-card">
         <!-- Dumbbell chart -->
         <div id="chart9" class="chart">
@@ -176,9 +231,17 @@
             </script>
         </div>
       </div>
-      <p>
-        Visiting is moving online, and so is what people borrow.
-      </p>
+      <div class="text-with-stat">
+        <p>
+          Visiting is moving online, and so is what people borrow. <br>
+          Ebooks, databases and streaming now make up <br>
+          a growing share of library use.
+        </p>
+        <aside class="side-stat">
+          <span class="side-stat-value">34%</span>
+          <span class="side-stat-label">of library use was digital in 2024-25, up from 25% in 2020-21</span>
+        </aside>
+      </div>
 
       <div class="chart-card chart-row">
         <!-- Waffle chart -->

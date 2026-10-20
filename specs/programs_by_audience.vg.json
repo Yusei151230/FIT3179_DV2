@@ -4,7 +4,7 @@
     "url": "data/programs_by_audience.csv",
     "format": {"type": "csv", "parse": {"sessions": "number", "order": "number"}}
   },
-  "width": 280,
+  "width": "container",
   "height": {"step": 34},
   "title": {
     "text": ["From toddlers to seniors:", "programs for every age"],
@@ -68,5 +68,9 @@
       }
     }
   ],
-  "config": {"view": {"stroke": null}}
+    "config": {
+    "view": {"stroke": null},
+    "title": {"anchor": "start", "fontSize": 18, "fontWeight": 700, "color": "#0F172A",
+              "subtitleColor": "#64748B", "subtitleFontSize": 13, "offset": 10}
+  }
 }

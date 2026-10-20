@@ -217,6 +217,43 @@ h3 {
 
 p { margin: 0 0 var(--space-m); max-width: var(--text-max); }
 
+/* Paragraph with a key number on the right.
+   Two equal columns with the same gap as .chart-row, so the stat's line
+   starts exactly where the right-hand chart in a .chart-row starts. */
+.text-with-stat {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--space-xs);
+  align-items: stretch;   /* the stat's line runs the full height of the paragraph */
+  margin: 0 0 var(--space-m);
+}
+.text-with-stat p { margin: 0; }
+/* Number and label side by side, so the stat fills the right column */
+.side-stat {
+  display: flex;
+  align-items: center;
+  gap: var(--space-m);
+  padding-left: var(--space-m);
+  border-left: 3px solid var(--accent);
+}
+.side-stat-value { flex: 0 0 auto; }
+.side-stat .side-stat-label { margin-top: 0; max-width: calc(260 * var(--u)); }
+.side-stat-value {
+  display: block;
+  font-size: var(--fs-stat);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.side-stat-label {
+  display: block;
+  margin-top: calc(6 * var(--u));
+  font-size: var(--fs-small);
+  line-height: 1.4;
+  color: var(--muted);
+}
+
 section > p, .split-text p { color: #34313a; }
 
 /* End-of-chapter question that leads into the next chapter */
@@ -231,6 +268,28 @@ section > p, .split-text p { color: #34313a; }
   font-weight: 600;
   line-height: 1.4;
   color: var(--ink);
+  /* Same two columns as .text-with-stat: the arrow starts on the same
+     vertical line as the stats' purple lines, the question ends at the right edge */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--space-xs);
+  align-items: center;
+}
+.chapter-question p { margin: 0; }
+.cq-facts { font-weight: 500; color: #34313a; }
+.cq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-m);
+  text-align: right;
+}
+.cq-arrow {
+  flex: 0 0 auto;
+  font-family: "Inter", sans-serif;
+  font-size: calc(32 * var(--u));
+  line-height: 1;
+  color: var(--accent);
 }
 
 /* ---------- Chart cards ---------- */
@@ -277,6 +336,13 @@ section > p, .split-text p { color: #34313a; }
   height: auto;
   margin: 0 auto;   /* centre the chart; leftover space is split evenly */
 }
+/* vegaEmbed puts .vega-embed (inline-block) on the chart div itself,
+   which shrinks it to zero width when a spec uses "width": "container".
+   Make every chart div full width so "container" fills the card. */
+.chart.vega-embed { display: block; width: 100%; }
+/* Specs with "height": "container" need a set height on their div.
+   It grows with the screen width, between a phone and a desktop size. */
+#chart3.vega-embed { height: clamp(320px, 40vw, 460px); }
 .chart-error { color: #b3261e; font-size: var(--fs-small); }
 
 /* Vega-Lite dropdown binding (digital_share) */
@@ -317,6 +383,9 @@ footer a { color: var(--accent); }
 /* ---------- Smartphone layout ---------- */
 @media (max-width: 699.98px) {
   .stats         { grid-template-columns: 1fr; }
+  .text-with-stat { grid-template-columns: 1fr; row-gap: var(--space-s); }
+  .chapter-question { grid-template-columns: 1fr; row-gap: var(--space-s); }
+  .cq-question      { justify-content: flex-start; text-align: left; }
   .split         { grid-template-columns: 1fr; gap: 0; }
   .chart-row     { flex-direction: column; align-items: stretch; }
   .chart-card    { padding: 16px; }

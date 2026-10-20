@@ -4,7 +4,7 @@
     "text": "Public libraries across Australia",
     "subtitle": "Each dot is one library (locations as of 2018)"
   },
-  "width": 440,
+  "width": "container",
   "height": 400,
   "projection": {
   "type": "conicEqualArea",
@@ -33,5 +33,9 @@
       }
     }
   ],
-  "config": {"view": {"stroke": null}}
+  "config": {
+    "view": {"stroke": null},
+    "title": {"anchor": "start", "fontSize": 18, "fontWeight": 700, "color": "#0F172A",
+              "subtitleColor": "#64748B", "subtitleFontSize": 13, "offset": 10}
+  }
 }

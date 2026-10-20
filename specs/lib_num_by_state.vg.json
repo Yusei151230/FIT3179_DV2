@@ -2,9 +2,9 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Where can you find a library?",
-    "subtitle": "1,733 library service points across Australia in 2024–25"
+    "subtitle": "1,733 library service points across Australia in 2024-25"
   },
-  "width": 290,
+  "width": "container",
   "height": {"step": 46},
   "data": {"url": "data/lib_outlets_by_state.csv"},
   "transform": [
@@ -27,7 +27,8 @@
       "transform": [{"filter": "datum.count > 0"}],
       "mark": {"type": "bar", "height": 24, "cornerRadius": 4, "stroke": "white", "strokeWidth": 2},
       "encoding": {
-        "x": {"field": "count", "type": "quantitative", "stack": "zero", "axis": null},
+        "x": {"field": "count", "type": "quantitative", "stack": "zero", "axis": null,
+              "scale": {"domain": [0, 520]}},
         "order": {"field": "type_order"},
         "color": {
           "field": "outlet_type", "type": "nominal", "title": null,

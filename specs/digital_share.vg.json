@@ -37,6 +37,55 @@
             "tooltip": [{"field": "year"}, {"field": "type"}]
             }
     },
+        {
+    "transform": [
+        {"filter": "datum.type == 'Digital'"},
+        {"aggregate": [{"op": "count", "as": "num"}], "groupby": ["type"]},
+        {"calculate": "datum.num + '%'","as": "pct"}
+    ],
+    "mark": {"type": "text", "fontSize": 28, "fontWeight": "bold", "color": "#1E3A8A"},
+    "encoding": {
+        "x": {"value": 150},
+        "y": {"value": 45},
+        "text": {"field": "pct"}
+    }
+    },
+{
+  "transform": [
+    {"filter": "datum.type == 'Digital'"},
+    {"aggregate": [{"op": "count", "as": "num"}], "groupby": ["type"]},
+    {"calculate": "datum.num + '%'", "as": "pct"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "text", "fontSize": 28, "fontWeight": "bold",
+               "color": "white", "stroke": "white", "strokeWidth": 6, "strokeJoin": "round"},
+      "encoding": {"x": {"value": 150}, "y": {"value": 45}, "text": {"field": "pct"}}
+    },
+    {
+      "mark": {"type": "text", "fontSize": 28, "fontWeight": "bold", "color": "#4c2a85"},
+      "encoding": {"x": {"value": 150}, "y": {"value": 45}, "text": {"field": "pct"}}
+    }
+  ]
+},
+{
+  "transform": [
+    {"filter": "datum.type == 'Physical'"},
+    {"aggregate": [{"op": "count", "as": "num"}], "groupby": ["type"]},
+    {"calculate": "datum.num + '%'", "as": "pct"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "text", "fontSize": 28, "fontWeight": "bold",
+               "color": "white", "stroke": "white", "strokeWidth": 6, "strokeJoin": "round"},
+      "encoding": {"x": {"value": 150}, "y": {"value": 210}, "text": {"field": "pct"}}
+    },
+    {
+      "mark": {"type": "text", "fontSize": 28, "fontWeight": "bold", "color": "#0f766e"},
+      "encoding": {"x": {"value": 150}, "y": {"value": 210}, "text": {"field": "pct"}}
+    }
+  ]
+},
     {
     "transform": [
         {"filter": "datum.type == 'Digital'"},
@@ -64,5 +113,9 @@
         }
     }
   ],
-  "config": {"view": {"stroke": null}}
+    "config": {
+    "view": {"stroke": null},
+    "title": {"anchor": "start", "fontSize": 18, "fontWeight": 700, "color": "#0F172A",
+              "subtitleColor": "#64748B", "subtitleFontSize": 13, "offset": 10}
+  }
 }
