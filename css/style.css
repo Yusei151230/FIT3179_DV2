@@ -342,7 +342,11 @@ section > p, .split-text p { color: #34313a; }
 .chart.vega-embed { display: block; width: 100%; }
 /* Specs with "height": "container" need a set height on their div.
    It grows with the screen width, between a phone and a desktop size. */
-#chart3.vega-embed { height: clamp(320px, 40vw, 460px); }
+#chart1.vega-embed  { height: clamp(340px, 38vw, 460px); }   /* dot map */
+#chart3.vega-embed  { height: clamp(320px, 40vw, 460px); }   /* visits, collection, loans */
+#chart7.vega-embed  { height: clamp(380px, 45vw, 560px); }   /* program sessions map */
+#chart8.vega-embed  { height: clamp(320px, 33vw, 420px); }   /* physical vs digital */
+#chart11.vega-embed { height: clamp(380px, 38vw, 460px); }   /* digital share map */
 .chart-error { color: #b3261e; font-size: var(--fs-small); }
 
 /* Vega-Lite dropdown binding (digital_share) */
@@ -388,5 +392,7 @@ footer a { color: var(--accent); }
   .cq-question      { justify-content: flex-start; text-align: left; }
   .split         { grid-template-columns: 1fr; gap: 0; }
   .chart-row     { flex-direction: column; align-items: stretch; }
+  /* In a column, flex-basis 0 would override the chart heights set above */
+  .chart-row .chart { flex: none; }
   .chart-card    { padding: 16px; }
 }

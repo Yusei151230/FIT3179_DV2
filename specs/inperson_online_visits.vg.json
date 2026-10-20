@@ -1,8 +1,10 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "params": [{"name": "narrow", "expr": "containerSize()[0] < 560"}],
     "title": {
-        "text": "In three states, people visit their library online more than in person",
-        "subtitle": "Visits per person, 2024-25. Online = library website and catalogue visits.",
+        "fontSize": {"expr": "narrow ? 15 : 18"}, "subtitleFontSize": {"expr": "narrow ? 11 : 13"},
+        "text": {"expr": "narrow ? ['In three states, people visit their library', 'online more than in person'] : 'In three states, people visit their library online more than in person'"},
+        "subtitle": {"expr": "narrow ? ['Visits per person, 2024-25.', 'Online = library website and catalogue visits.'] : 'Visits per person, 2024-25. Online = library website and catalogue visits.'"},
         "anchor": "start"
     },
     "data": {

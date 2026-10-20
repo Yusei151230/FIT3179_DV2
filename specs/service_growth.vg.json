@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "params": [{"name": "narrow", "expr": "containerSize()[0] < 560"}],
   "title": {
-    "text": "Wi-Fi, computers, meeting rooms and programs grew far faster than book loans",
-    "subtitle": [
-      "Growth since 2021-22. *Wi-Fi: only 4 states/territories report this"
-    ],
+    "fontSize": {"expr": "narrow ? 15 : 18"}, "subtitleFontSize": {"expr": "narrow ? 11 : 13"},
+    "text": {"expr": "narrow ? ['Wi-Fi, computers, meeting rooms and programs', 'grew far faster than book loans'] : 'Wi-Fi, computers, meeting rooms and programs grew far faster than book loans'"},
+    "subtitle": {"expr": "narrow ? ['Growth since 2021-22.', '*Wi-Fi: only 4 states/territories report this'] : 'Growth since 2021-22. *Wi-Fi: only 4 states/territories report this'"},
     "anchor": "start"
   },
   "data": {
@@ -29,7 +29,7 @@
         "labelAngle": 0,
         "domain": false,
         "ticks": false,
-        "labelFontSize": 12
+        "labelFontSize": {"expr": "narrow ? 10 : 12"}
       }
     },
     "y": {
@@ -39,7 +39,7 @@
       "axis": {
         "domain": false,
         "ticks": false,
-        "labelFontSize": 12,
+        "labelFontSize": {"expr": "narrow ? 10 : 12"},
         "labelLimit": 300
       }
     }
@@ -57,7 +57,7 @@
           "type": "quantitative",
           "title": "Growth since 2021-22 (%)",
           "scale": {
-            "range": ["#fffaf0", "#fcd38d", "#c2410c"],
+            "range": ["#f7fee7", "#bef264", "#4d7c0f"],
             "domain": [
               0,
               150
@@ -95,7 +95,7 @@
     {
       "mark": {
         "type": "text",
-        "fontSize": 13,
+        "fontSize": {"expr": "narrow ? 11 : 13"},
         "fontWeight": "bold"
       },
       "encoding": {
@@ -104,7 +104,7 @@
         },
         "color": {
           "condition": {
-            "test": "datum['change_since_2021-22_pct'] > 85",
+            "test": "datum['change_since_2021-22_pct'] > 100",
             "value": "white"
           },
           "value": "#0F172A"

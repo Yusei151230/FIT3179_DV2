@@ -1,6 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "params": [{"name": "narrow", "expr": "containerSize()[0] < 560"}],
   "title": {
+    "fontSize": {"expr": "narrow ? 15 : 18"}, "subtitleFontSize": {"expr": "narrow ? 11 : 13"},
     "text": "Where can you find a library?",
     "subtitle": "1,733 library service points across Australia in 2024-25"
   },
@@ -16,7 +18,7 @@
       "field": "state_name", "type": "nominal", "title": null,
       "sort": {"field": "total", "op": "max", "order": "descending"},
       "axis": {
-        "ticks": false, "domain": false, "labelFontSize": 12, "labelColor": "#334155",
+        "ticks": false, "domain": false, "labelFontSize": {"expr": "narrow ? 10 : 12"}, "labelColor": "#334155",
         "labelPadding": 10, "labelLimit": 0,
         "labelExpr": "datum.label == 'Australian Capital Territory' ? ['Australian Capital', 'Territory'] : datum.label"
       }
@@ -34,11 +36,11 @@
           "field": "outlet_type", "type": "nominal", "title": null,
           "scale": {
             "domain": ["Branch", "Mobile library", "Other outlet"],
-            "range": ["#4F46E5", "#F59E0B", "#C7D2FE"]
+            "range": ["#4F46E5", "#10B981", "#C7D2FE"]
           },
           "legend": {
             "orient": "top", "direction": "horizontal", "symbolType": "square", "symbolSize": 120,
-            "labelFontSize": 12, "labelColor": "#334155", "gridAlign": "none", "columnPadding": 12, "offset": 12
+            "labelFontSize": {"expr": "narrow ? 10 : 12"}, "labelColor": "#334155", "gridAlign": "none", "columnPadding": 12, "offset": 12
           }
         },
         "tooltip": [
@@ -50,7 +52,7 @@
     },
     {
       "transform": [{"filter": "datum.outlet_type == 'Branch' && datum.count >= 40"}],
-      "mark": {"type": "text", "align": "right", "dx": -8, "fontSize": 11, "fontWeight": 600, "color": "white"},
+      "mark": {"type": "text", "align": "right", "dx": -8, "fontSize": {"expr": "narrow ? 9 : 11"}, "fontWeight": 600, "color": "white"},
       "encoding": {
         "x": {"field": "count", "type": "quantitative"},
         "text": {"field": "count", "type": "quantitative", "format": ","}
@@ -58,7 +60,7 @@
     },
     {
       "transform": [{"filter": "datum.type_order == 0"}],
-      "mark": {"type": "text", "align": "left", "dx": 8, "fontSize": 13, "fontWeight": 700, "color": "#0F172A"},
+      "mark": {"type": "text", "align": "left", "dx": 8, "fontSize": {"expr": "narrow ? 11 : 13"}, "fontWeight": 700, "color": "#0F172A"},
       "encoding": {
         "x": {"field": "total", "type": "quantitative"},
         "text": {"field": "total", "type": "quantitative", "format": ","}

@@ -1,15 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "params": [{"name": "narrow", "expr": "containerSize()[0] < 560"}],
   "title": {
-    "text": [
-      "Victoria runs the most library programs,",
-      "but South Australia offers three times as many per person as NSW"
-    ],
-    "subtitle": "Library program sessions, 2024-25. Colour = sessions per 1,000 people; circle = total sessions.",
+    "fontSize": {"expr": "narrow ? 15 : 18"}, "subtitleFontSize": {"expr": "narrow ? 11 : 13"},
+    "text": {"expr": "narrow ? ['Victoria runs the most library programs,', 'but South Australia offers three times', 'as many per person as NSW'] : ['Victoria runs the most library programs,', 'but South Australia offers three times as many per person as NSW']"},
+    "subtitle": {"expr": "narrow ? ['Library program sessions, 2024-25.', 'Colour = sessions per 1,000 people;', 'circle = total sessions.'] : 'Library program sessions, 2024-25. Colour = sessions per 1,000 people; circle = total sessions.'"},
     "anchor": "start"
   },
   "width": "container",
-  "height": 470,
+  "height": "container",
   "projection": {
     "type": "conicEqualArea",
     "parallels": [
@@ -76,6 +75,9 @@
           "legend": {
             "orient": "right",
             "direction": "vertical",
+            "gradientLength": {"expr": "narrow ? 110 : 200"},
+            "titleFontSize": {"expr": "narrow ? 10 : 11"},
+            "labelFontSize": {"expr": "narrow ? 9 : 10"},
             "values": [
               0,
               10,
@@ -151,11 +153,13 @@
               "scale": {
                 "range": [
                   0,
-                  3000
+                  {"expr": "narrow ? 900 : 3000"}
                 ]
               },
               "legend": {
                 "orient": "right",
+                "titleFontSize": {"expr": "narrow ? 10 : 11"},
+                "labelFontSize": {"expr": "narrow ? 9 : 10"},
                 "values": [
                   3000,
                   10000,
@@ -188,7 +192,7 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 11,
+            "fontSize": {"expr": "narrow ? 9 : 11"},
             "fontWeight": 700,
             "baseline": "middle",
             "dy": 0,
@@ -216,10 +220,10 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 11,
+            "fontSize": {"expr": "narrow ? 9 : 11"},
             "fontWeight": 600,
             "baseline": "top",
-            "dy": 32,
+            "dy": {"expr": "narrow ? 18 : 32"},
             "color": "white",
             "stroke": "white",
             "strokeWidth": 4,
@@ -247,10 +251,10 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 11,
+            "fontSize": {"expr": "narrow ? 9 : 11"},
             "fontWeight": 600,
             "baseline": "top",
-            "dy": 32,
+            "dy": {"expr": "narrow ? 18 : 32"},
             "color": "#111827"
           },
           "transform": [
@@ -275,10 +279,10 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 11,
+            "fontSize": {"expr": "narrow ? 9 : 11"},
             "fontWeight": 600,
             "baseline": "top",
-            "dy": 23,
+            "dy": {"expr": "narrow ? 13 : 23"},
             "color": "white",
             "stroke": "white",
             "strokeWidth": 4,
@@ -306,10 +310,10 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 11,
+            "fontSize": {"expr": "narrow ? 9 : 11"},
             "fontWeight": 600,
             "baseline": "top",
-            "dy": 23,
+            "dy": {"expr": "narrow ? 13 : 23"},
             "color": "#111827"
           },
           "transform": [
@@ -334,7 +338,7 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 10,
+            "fontSize": {"expr": "narrow ? 9 : 10"},
             "fontWeight": 700,
             "baseline": "bottom",
             "dy": -10,
@@ -365,7 +369,7 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 10,
+            "fontSize": {"expr": "narrow ? 9 : 10"},
             "fontWeight": 700,
             "baseline": "bottom",
             "dy": -10,
@@ -393,7 +397,7 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 11,
+            "fontSize": {"expr": "narrow ? 9 : 11"},
             "fontWeight": 600,
             "baseline": "top",
             "dy": 8,
@@ -424,7 +428,7 @@
         {
           "mark": {
             "type": "text",
-            "fontSize": 11,
+            "fontSize": {"expr": "narrow ? 9 : 11"},
             "fontWeight": 600,
             "baseline": "top",
             "dy": 8,

@@ -1,13 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "params": [{"name": "narrow", "expr": "containerSize()[0] < 420"}],
   "title": {
-    "text": ["In 7 of 8 states, over 30% of library use is digital","and in two it is about 40% or more"],
-    "subtitle": [
-      "Share of digital collection use: Digital = ebooks, databases and streaming."
-    ]
+    "fontSize": {"expr": "narrow ? 15 : 18"}, "subtitleFontSize": {"expr": "narrow ? 11 : 13"},
+    "text": {"expr": "narrow ? ['In 7 of 8 states, over 30%', 'of use is digital, and about', '40% or more in two'] : ['In 7 of 8 states, over 30% of use is digital,', 'and about 40% or more in two']"},
+    "subtitle": {"expr": "narrow ? ['Digital share of collection use, by state.', 'Digital = ebooks, databases and streaming.'] : 'Digital = ebooks, databases and streaming.'"},
+    "anchor": "start",
+    "frame": "group"
   },
   "width": "container",
-  "height": 380,
+  "height": "container",
   "projection": {
   "type": "conicEqualArea",
   "parallels": [-18, -36],
@@ -39,7 +41,7 @@
               "legend": {
                 "orient": "bottom-left", "direction": "horizontal", "gradientLength": 150,
                 "values": [25, 30, 35, 40, 45], "labelExpr": "datum.value + '%'",
-                "titleFontSize": 11, "labelFontSize": 10, "titleColor": "#334155", "labelColor": "#64748B"
+                "titleFontSize": {"expr": "narrow ? 9 : 11"}, "labelFontSize": {"expr": "narrow ? 9 : 10"}, "titleColor": "#334155", "labelColor": "#64748B"
               }
             },
             "tooltip": [
@@ -73,7 +75,7 @@
         },
         {
           "transform": [{"filter": "!datum.outside"}],
-          "mark": {"type": "text", "baseline": "bottom", "dy": -1, "fontSize": 11, "fontWeight": 500, "align": "center"},
+          "mark": {"type": "text", "baseline": "bottom", "dy": -1, "fontSize": {"expr": "narrow ? 9 : 11"}, "fontWeight": 500, "align": "center"},
           "encoding": {
             "longitude": {"field": "lab_lon", "type": "quantitative"},
             "latitude": {"field": "latitude", "type": "quantitative"},
@@ -83,7 +85,7 @@
         },
         {
           "transform": [{"filter": "!datum.outside"}],
-          "mark": {"type": "text", "baseline": "top", "dy": 1, "fontSize": 17, "fontWeight": 700, "align": "center"},
+          "mark": {"type": "text", "baseline": "top", "dy": 1, "fontSize": {"expr": "narrow ? 14 : 17"}, "fontWeight": 700, "align": "center"},
           "encoding": {
             "longitude": {"field": "lab_lon", "type": "quantitative"},
             "latitude": {"field": "latitude", "type": "quantitative"},
@@ -93,7 +95,7 @@
         },
         {
           "transform": [{"filter": "datum.outside"}],
-          "mark": {"type": "text", "baseline": "bottom", "dy": -1, "dx": 4, "fontSize": 11, "fontWeight": 500, "align": "center", "color": "#334155"},
+          "mark": {"type": "text", "baseline": "bottom", "dy": -1, "dx": 4, "fontSize": {"expr": "narrow ? 9 : 11"}, "fontWeight": 500, "align": "center", "color": "#334155"},
           "encoding": {
             "longitude": {"field": "lab_lon", "type": "quantitative"},
             "latitude": {"field": "latitude", "type": "quantitative"},
@@ -102,7 +104,7 @@
         },
         {
           "transform": [{"filter": "datum.outside"}],
-          "mark": {"type": "text", "baseline": "top", "dy": 1, "dx": 4, "fontSize": 17, "fontWeight": 700, "align": "center", "color": "#0F172A"},
+          "mark": {"type": "text", "baseline": "top", "dy": 1, "dx": 4, "fontSize": {"expr": "narrow ? 14 : 17"}, "fontWeight": 700, "align": "center", "color": "#0F172A"},
           "encoding": {
             "longitude": {"field": "lab_lon", "type": "quantitative"},
             "latitude": {"field": "latitude", "type": "quantitative"},
@@ -114,7 +116,7 @@
   ],
   "config": {
     "view": {"stroke": null},
-    "title": {"anchor": "start", "fontSize": 17, "fontWeight": 700, "color": "#0F172A",
-              "subtitleColor": "#64748B", "subtitleFontSize": 12, "offset": 12}
+    "title": {"anchor": "start", "fontSize": 18, "fontWeight": 700, "color": "#0F172A",
+              "subtitleColor": "#64748B", "subtitleFontSize": 13, "offset": 10}
   }
 }
