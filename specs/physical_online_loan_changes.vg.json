@@ -10,28 +10,30 @@
     "data": {"url": "data/physical_online_loan_changes.csv"},
     "width": "container",
     "height": "container",
+    
     "layer": [
-                  {
-      "data": {"values": [{}]},
-      "mark": {"type": "rect", "opacity": 0.3},
-      "encoding": {
-        "x": {"datum": "2020-21"},
-        "x2": {"datum": "2021-22"},
-        "y": {"value": 0},
-        "y2": {"value": "height"},
-        "color": {"value": "#e5e7eb"}
-      }
-    },
-  {
-    "data": {"values": [{}]},
-    "mark": {"type": "text", "text": "COVID-19 lockdowns", "align": "left", "dx": 6,
-             "baseline": "top", "dy": 6, "fontSize": {"expr": "narrow ? 9 : 11"}, "fontWeight": 600},
-    "encoding": {
-      "x": {"datum": "2020-21"},
-      "y": {"value": 0},
-      "color": {"value": "#6b7280"}
-    }
-  },
+        
+        {
+            "data": {"values": [{}]},
+            "mark": {"type": "rect", "opacity": 0.3},
+            "encoding": {
+                "x": {"datum": "2020-21"},
+                "x2": {"datum": "2021-22"},
+                "y": {"value": 0},
+                "y2": {"value": "height"},
+                "color": {"value": "#e5e7eb"}
+            }
+        },
+        {
+            "data": {"values": [{}]},
+            "mark": {"type": "text", "text": "COVID-19 lockdowns", "align": "left", "dx": 6,
+                    "baseline": "top", "dy": 6, "fontSize": {"expr": "narrow ? 9 : 11"}, "fontWeight": 600},
+            "encoding": {
+            "x": {"datum": "2020-21"},
+            "y": {"value": 0},
+            "color": {"value": "#6b7280"}
+            }
+        },
         {
             "mark": {"type": "line", "point": true, "strokeWidth": 3},
             "encoding": {
@@ -51,7 +53,13 @@
                         "range": ["#99e2d8", "#3B82F6"]
                     },
                     "legend": {"orient": "top", "direction": "horizontal"}
-                }
+                },
+                "tooltip": [
+                    {"field": "series", "title": "Type"},
+                    {"field": "year", "title": "Financial year"},
+                    {"field": "value_millions", "type": "quantitative", "title": "Uses (millions)", "format": ".1f"},
+                    {"field": "change_since_2020-21_pct", "type": "quantitative", "title": "Change since 2020-21 (%)", "format": "+.1f"}
+                ]
             }
         },
         {

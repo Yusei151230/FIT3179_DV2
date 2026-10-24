@@ -3,7 +3,7 @@
   "params": [{"name": "narrow", "expr": "containerSize()[0] < 560"}],
   "title": {
     "fontSize": {"expr": "narrow ? 15 : 18"}, "subtitleFontSize": {"expr": "narrow ? 11 : 13"},
-    "text": "Public libraries across Australia",
+    "text": "Public branch libraries across Australia",
     "subtitle": "Each dot is one library (locations as of 2018)"
   },
   "width": "container",

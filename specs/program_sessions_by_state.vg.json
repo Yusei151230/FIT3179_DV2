@@ -4,7 +4,7 @@
   "title": {
     "fontSize": {"expr": "narrow ? 15 : 18"}, "subtitleFontSize": {"expr": "narrow ? 11 : 13"},
     "text": {"expr": "narrow ? ['Victoria runs the most library programs,', 'but South Australia offers three times', 'as many per person as NSW'] : ['Victoria runs the most library programs,', 'but South Australia offers three times as many per person as NSW']"},
-    "subtitle": {"expr": "narrow ? ['Library program sessions, 2024-25.', 'Colour = sessions per 1,000 people;', 'circle = total sessions.'] : 'Library program sessions, 2024-25. Colour = sessions per 1,000 people; circle = total sessions.'"},
+    "subtitle": {"expr": "narrow ? ['Library program sessions, 2024-25.', 'Colour = sessions per 1,000 people;', 'circle = total sessions.'] : ['Library program sessions, 2024-25. Colour = sessions per 1,000 people; circle = total sessions.']"},
     "anchor": "start"
   },
   "width": "container",

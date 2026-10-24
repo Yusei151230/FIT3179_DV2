@@ -52,7 +52,6 @@
     },
     "tooltip": [
       {"field": "display_name", "title": "Type"},
-      {"field": "examples", "title": "For example"},
       {"field": "sessions", "type": "quantitative", "title": "Sessions", "format": ","},
       {"field": "share", "type": "quantitative", "title": "Share", "format": ".1%"},
       {"field": "report_name", "title": "Report category"}
