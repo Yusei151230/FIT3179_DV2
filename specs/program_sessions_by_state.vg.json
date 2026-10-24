@@ -130,6 +130,16 @@
       ],
       "layer": [
         {
+          "transform": [{"filter": "datum.state == 'ACT'"}],
+          "mark": {"type": "rule", "color": "#64748B", "strokeWidth": 1},
+          "encoding": {
+            "longitude": {"field": "longitude", "type": "quantitative"},
+            "latitude": {"field": "latitude", "type": "quantitative"},
+            "longitude2": {"field": "lon"},
+            "latitude2": {"field": "lat"}
+          }
+        },
+        {
           "mark": {
             "type": "circle",
             "color": "#1f2937",

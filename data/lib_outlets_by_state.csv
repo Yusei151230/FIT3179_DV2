@@ -1,7 +1,7 @@
 state,state_name,outlet_type,count
-ACT,Australian Capital Territory,Branch,10
-ACT,Australian Capital Territory,Mobile library,0
-ACT,Australian Capital Territory,Other outlet,0
+ACT,ACT,Branch,10
+ACT,ACT,Mobile library,0
+ACT,ACT,Other outlet,0
 NSW,New South Wales,Branch,365
 NSW,New South Wales,Mobile library,27
 NSW,New South Wales,Other outlet,74

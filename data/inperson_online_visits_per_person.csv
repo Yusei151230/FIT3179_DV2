@@ -2,7 +2,7 @@ state,state_name,inperson_visits_millions,online_visits_millions,inperson_visits
 SA,South Australia,8.08,12.46,4.27,6.59,2.32,Online
 QLD,Queensland,16.94,18.21,3.12,3.35,0.23,Online
 TAS,Tasmania,2.3,2.36,4.0,4.1,0.10,Online
-ACT,Australian Capital Territory,1.41,1.13,2.93,2.35,0.58,In-person
+ACT,ACT,1.41,1.13,2.93,2.35,0.58,In-person
 WA,Western Australia,8.73,6.01,2.9,2.0,0.91,In-person
 NT,Northern Territory,0.78,0.49,2.96,1.86,1.10,In-person
 VIC,Victoria,24.2,14.73,3.45,2.1,1.35,In-person
